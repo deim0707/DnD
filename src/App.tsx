@@ -1,11 +1,11 @@
 import React from 'react';
-import Exp3 from "./Components/Exp3";
+import Container from "./Components/Exp1/Container";
 
 function App() {
 
     return (
         <div className="App" style={{display: 'flex'}}>
-            <Exp3/>
+            <Container/>
         </div>
     );
 }
