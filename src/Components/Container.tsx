@@ -1,8 +1,9 @@
 import React from "react";
-import DashBoard from "./DashBoard";
+import DashBoard from "./DashBoard/DashBoard";
 import {QuoteMap} from "./types";
 
-
+// ключ объекта станет тайтлом виджета
+// каждый айтем - маленькийВиджет
 const data: QuoteMap = {
     'Jake': [
         {
@@ -60,7 +61,7 @@ const data: QuoteMap = {
                 id: '4',
                 name: '"Princess bubblegum"',
                 url: "http://adventuretime.wikia.com/wiki/Princess_Bubblegum",
-                avatarUrl: "static/media/princess-min.34218e29.png",
+                avatarUrl: "https://i.ytimg.com/vi/UcnfY0wAb7A/maxresdefault.jpg",
                 colors: {soft: "#E3FCEF", hard: "rgba(9, 30, 66, 0.71)"}
             }
         },

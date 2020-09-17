@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {Draggable} from "react-beautiful-dnd";
-import {Author} from "./types";
+import {Author} from "../types";
 import './DraggableItem.css'
 
 interface Props {
@@ -23,7 +23,7 @@ const DraggableItem: FC<Props> = ({quote, id, idx}) => {
                     {...provided.dragHandleProps}
                 >
                     <p>Имя: {quote.name}</p>
-                    <p>Url: {quote.avatarUrl}</p>
+                    <p>Какой-то текст: {quote.avatarUrl}</p>
                     <img src={quote.avatarUrl} alt={quote.name}/>
                 </div>
             )}

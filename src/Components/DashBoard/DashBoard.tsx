@@ -1,10 +1,10 @@
 import React, {FC, useState} from "react";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
-import {QuoteMap, Quote} from "./types";
-import {reorder, reorderQuoteMap} from "./helpersDnD";
-import DraggableColumn from "./DraggableColumn";
+import {QuoteMap, Quote} from "../types";
+import {reorder, reorderQuoteMap} from "../helpersDnD";
+import DraggableColumn from "../DraggableColumn/DraggableColumn";
 
-import './boards.css'
+import './DashBoards.css'
 
 type Props = {
     [key: string]: QuoteMap

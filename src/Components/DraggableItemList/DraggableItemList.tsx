@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import {Droppable} from "react-beautiful-dnd";
-import DraggableItem from "./DraggableItem";
-import {Quote} from "./types";
+import DraggableItem from "../DraggableItem/DraggableItem";
+import {Quote} from "../types";
 import './DraggableItemList.css'
 
 interface Props {
