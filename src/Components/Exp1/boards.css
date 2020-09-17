@@ -1,7 +1,6 @@
 .container {
     background-color: gray;
-    min-height: 100vh;
-    min-width: 100vw;
+    /*min-height: 100vh;*/
     /*display: inline-flex;*/
     display: flex;
 

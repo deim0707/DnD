@@ -1,5 +1,5 @@
 import React from "react";
-import Board from "./Board";
+import DashBoard from "./DashBoard";
 import {QuoteMap} from "./types";
 
 
@@ -11,7 +11,7 @@ const data: QuoteMap = {
             author: {
                 id: "1",
                 name: "Jake",
-                avatarUrl: "static/media/jake-min.cc34aede.png",
+                avatarUrl: "https://мтв.онлайн/files/2019/21779-119020-25151-xv2v84.jpg",
                 url: "http://adventuretime.wikia.com/wiki/Jake",
                 colors: {soft: "#FFFAE6", hard: "rgba(9, 30, 66, 0.71)"}
             }
@@ -105,7 +105,7 @@ const data: QuoteMap = {
 const Container = () => {
     return (
         <div>
-            <Board initial={data}/>
+            <DashBoard initial={data}/>
         </div>
     )
 }

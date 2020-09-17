@@ -21,3 +21,4 @@ export type AuthorColors = {
 export type QuoteMap = {
     [key: string]: Quote[],
 };
+
