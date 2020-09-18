@@ -1,9 +1,9 @@
 import React, {FC} from "react";
 import DashBoard from "./DashBoard/DashBoard";
-import {QuoteMap} from "./types";
+import {WidgetMap} from "./types";
 
 
-const data: QuoteMap = {
+const data: WidgetMap = {
     'Dat4ik': [
         {
             id: '234ss234',
@@ -40,9 +40,9 @@ const data: QuoteMap = {
             id: '234s2s234',
             type: 'Widget1',
             content: {
-                title: 'CO2',
+                title: 'Шум',
                 value: '123.99',
-                type: 'leaf',
+                type: 'asteroid',
                 time: Date.now(),
                 typeData: 'ppm',
             }

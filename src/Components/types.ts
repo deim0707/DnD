@@ -1,4 +1,4 @@
-export type Author = {
+export type Content = {
     title: string,
     value?: string | boolean | any,
     type?: string | any,
@@ -6,13 +6,13 @@ export type Author = {
     typeData?: string |any,
 };
 
-export type Quote = {
+export type Widget = {
     id: string,
     type: string,
-    content: Author,
+    content: Content,
 }
 
-export type QuoteMap = {
-    [key: string]: Quote[],
+export type WidgetMap = {
+    [key: string]: Widget[],
 };
 

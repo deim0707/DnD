@@ -13,7 +13,6 @@ interface Props {
 
 const Widget1: FC<Props> = ({type, title, time, value, typeData}) => {
 
-
     const titleImg = (): string => {
         switch (type) {
             case 'asteroid':
@@ -25,11 +24,10 @@ const Widget1: FC<Props> = ({type, title, time, value, typeData}) => {
         }
     }
 
-    const timeString = ():string => {
+    const timeString = (): string => {
         const date: Date = new Date(time)
         const hours: number = date.getHours()
         const minutes: number = date.getMinutes()
-        console.log(`${hours}:${minutes}`)
         return `${hours}:${minutes}`
     }
 
@@ -49,8 +47,8 @@ const Widget1: FC<Props> = ({type, title, time, value, typeData}) => {
                     <div className="typeData">{typeData}</div>
                 </div>
                 <div className='widget1Pictures'>
-                    <img src="http://dev.stdu.info/static/media/borders.e76b938e.svg"/>
-                    <img src="http://dev.stdu.info/static/media/borders.e76b938e.svg"/>
+                    <img src="http://dev.stdu.info/static/media/borders.e76b938e.svg" alt={'metrics'}/>
+                    <img src="http://dev.stdu.info/static/media/borders.e76b938e.svg" alt={'metrics'}/>
                 </div>
             </div>
         </div>

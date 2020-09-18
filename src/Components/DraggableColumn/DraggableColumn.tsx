@@ -1,17 +1,17 @@
 import React, {FC} from "react";
 import {Draggable} from "react-beautiful-dnd";
-import {Quote} from "../types";
+import {Widget} from "../types";
 import DraggableItemList from "../DraggableItemList/DraggableItemList";
 import './DraggableColumn.css'
 
 interface Props {
     index: number,
     title: string,
-    quotes: Quote[],
+    items: Widget[],
 }
 
 //Column
-const DraggableColumn: FC<Props> = ({ index, title, quotes}) => {
+const DraggableColumn: FC<Props> = ({ index, title, items}) => {
     return (
         <Draggable draggableId={title} index={index}>
             {(provided, snapshot) => (
@@ -30,7 +30,7 @@ const DraggableColumn: FC<Props> = ({ index, title, quotes}) => {
                     <DraggableItemList
                         listId={title}
                         // listType="QUOTE"
-                        quotes={quotes}
+                        items={items}
                     />
                 </div>
             )}

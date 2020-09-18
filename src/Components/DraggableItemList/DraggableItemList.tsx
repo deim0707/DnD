@@ -1,16 +1,16 @@
 import React, {FC} from "react";
 import {Droppable} from "react-beautiful-dnd";
-import {Quote} from "../types";
+import {Widget} from "../types";
 import DraggableItem from "../DraggableItem/DraggableItem";
 import './DraggableItemList.css'
 
 interface Props {
     listId: string,
-    quotes: Quote[],
+    items: Widget[],
 }
 
 //QuoteList
-const DraggableItemList: FC<Props> = ({listId, quotes}) => {
+const DraggableItemList: FC<Props> = ({listId, items}) => {
     return (
         <Droppable
             droppableId={listId}
@@ -22,9 +22,9 @@ const DraggableItemList: FC<Props> = ({listId, quotes}) => {
                     ref={provided.innerRef}
                 >
                     {
-                        quotes.map((item: any, idx: number) => (
+                        items.map((item: any, idx: number) => (
                             <DraggableItem
-                                quote={item.content}
+                                item={item.content}
                                 type={item.type}
                                 id={item.id}
                                 idx={idx}

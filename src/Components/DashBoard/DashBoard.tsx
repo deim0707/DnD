@@ -1,23 +1,22 @@
 import React, {FC, useState} from "react";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
-import {QuoteMap, Quote} from "../types";
+import {WidgetMap, Widget} from "../types";
 import {reorder, reorderQuoteMap} from "../helpersDnD";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
 
 import './DashBoards.css'
 
 type Props = {
-    [key: string]: QuoteMap
+    [key: string]: WidgetMap
 }
 
 const DashBoard: FC<Props> = ({initial}) => {
 
-    const [columns, setColumns] = useState<QuoteMap>(initial);
+    const [columns, setColumns] = useState<WidgetMap>(initial);
     const [ordered, setOrdered] = useState<string[]>(Object.keys(initial));
 
 
     const onDragEnd = (result: any) => {
-        console.log('onDragEnd')
         console.log(result)
 
         if (result.combine) {
@@ -28,10 +27,10 @@ const DashBoard: FC<Props> = ({initial}) => {
                 return;
             }
 
-            const column: Quote[] = columns[result.source.droppableId];
-            const withQuoteRemoved: Quote[] = [...column];
+            const column: Widget[] = columns[result.source.droppableId];
+            const withQuoteRemoved: Widget[] = [...column];
             withQuoteRemoved.splice(result.source.index, 1);
-            const newColumns: QuoteMap = {
+            const newColumns: WidgetMap = {
                 ...columns,
                 [result.source.droppableId]: withQuoteRemoved,
             };
@@ -101,7 +100,7 @@ const DashBoard: FC<Props> = ({initial}) => {
                                     key={key}
                                     index={index}
                                     title={key} /*<= заголовок из ключа объекта*/
-                                    quotes={columns[key]} /*<= здесь конкретный объект*/
+                                    items={columns[key]} /*<= здесь конкретный объект*/
                                 />
                             ))}
                             {provided.placeholder}

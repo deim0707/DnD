@@ -1,30 +1,30 @@
 import React, {FC} from "react";
 import {Draggable} from "react-beautiful-dnd";
-import {Author} from "../types";
+import {Content} from "../types";
 import './DraggableItem.css'
 import Widget1 from "../Widgets/Widget1/Widget1";
 import Widget2 from "../Widgets/Widget2/Widget2";
 import Widget3 from "../Widgets/Widget3/Widget3";
 
 interface Props {
-    quote: Author,
+    item: Content,
     id: string,
     idx: number,
     type: string
 }
 
-const DraggableItem: FC<Props> = ({quote, id, idx, type}) => {
+const DraggableItem: FC<Props> = ({item, id, idx, type}) => {
 
-    const item = () => {
+    const getCurrentItem = () => {
         switch (type) {
             case 'Widget1':
-                return <Widget1 title={quote.title} time={quote.time} type={quote.type} value={quote.value} typeData={quote.typeData}/>
+                return <Widget1 title={item.title} time={item.time} type={item.type} value={item.value} typeData={item.typeData}/>
 
             case 'Widget2':
-                return <Widget2 title={quote.title} time={quote.time} value={quote.value}/>
+                return <Widget2 title={item.title} time={item.time} value={item.value}/>
 
             case 'Widget3':
-                return <Widget3 title={quote.title} type={quote.type} value={quote.value}/>
+                return <Widget3 title={item.title} type={item.type} value={item.value}/>
 
             default: return null;
         }
@@ -42,7 +42,7 @@ const DraggableItem: FC<Props> = ({quote, id, idx, type}) => {
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                 >
-                    {item()}
+                    {getCurrentItem()}
                 </div>
             )}
         </Draggable>

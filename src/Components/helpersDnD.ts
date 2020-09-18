@@ -1,4 +1,4 @@
-import {Quote, QuoteMap} from "./types";
+import {Widget, WidgetMap} from "./types";
 
 export const reorder = (list: any[], startIndex: number, endIndex: number): any[] => {
     const result = Array.from(list);
@@ -13,17 +13,17 @@ export const reorderQuoteMap = ({
                                     source,
                                     destination,
                                 }: any) => {
-    const current: Quote[] = [...quoteMap[source.droppableId]];
-    const next: Quote[] = [...quoteMap[destination.droppableId]];
-    const target: Quote = current[source.index];
+    const current: Widget[] = [...quoteMap[source.droppableId]];
+    const next: Widget[] = [...quoteMap[destination.droppableId]];
+    const target: Widget = current[source.index];
 
     if (source.droppableId === destination.droppableId) {
-        const reordered: Quote[] = reorder(
+        const reordered: Widget[] = reorder(
             current,
             source.index,
             destination.index,
         );
-        const result: QuoteMap = {
+        const result: WidgetMap = {
             ...quoteMap,
             [source.droppableId]: reordered,
         };
@@ -34,7 +34,7 @@ export const reorderQuoteMap = ({
 
     current.splice(source.index, 1);
     next.splice(destination.index, 0, target);
-    const result: QuoteMap = {
+    const result: WidgetMap = {
         ...quoteMap,
         [source.droppableId]: current,
         [destination.droppableId]: next,

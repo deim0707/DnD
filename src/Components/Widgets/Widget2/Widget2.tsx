@@ -7,16 +7,15 @@ interface Props {
     value: boolean,
 }
 
-const Widget2: FC<Props> = ({title,value,time}) => {
+const Widget2: FC<Props> = ({title, value, time}) => {
 
-    const [isTurn, setIsTurn] = useState(value);
-
+    const [isTurn, setIsTurn] = useState<boolean>(value);
 
     const style = {
-        backgroundColor: isTurn? 'darkgreen' : 'red'
+        backgroundColor: isTurn ? 'darkgreen' : 'red'
     }
 
-    return  (
+    return (
         <div className='Widget2'>
             <div className="Widget2Widget2title">
                 {title}
@@ -24,10 +23,10 @@ const Widget2: FC<Props> = ({title,value,time}) => {
             <div className='Widget2Main' style={style}>
                 <div
                     className='Widget2Condition'
-                    onClick={()=> setIsTurn(isTurn => !isTurn)}
+                    onClick={() => setIsTurn(isTurn => !isTurn)}
                 >
                     <div>
-                        {isTurn? 'ВКЛ' : 'ВЫКЛ'}</div>
+                        {isTurn ? 'ВКЛ' : 'ВЫКЛ'}</div>
                 </div>
                 <div className='Widget2Date'>{time}</div>
             </div>
