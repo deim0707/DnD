@@ -24,7 +24,8 @@ const DraggableItemList: FC<Props> = ({listId, quotes}) => {
                     {
                         quotes.map((item: any, idx: number) => (
                             <DraggableItem
-                                quote={item.author}
+                                quote={item.content}
+                                type={item.type}
                                 id={item.id}
                                 idx={idx}
                                 key={item.id}

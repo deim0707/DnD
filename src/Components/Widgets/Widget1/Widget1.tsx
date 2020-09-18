@@ -7,11 +7,11 @@ interface Props {
     title: string,
     time: number,
     type: string,
-    data: string,
+    value: string,
     typeData: string
 }
 
-const Widget1: FC<Props> = ({type, title, time, data, typeData}) => {
+const Widget1: FC<Props> = ({type, title, time, value, typeData}) => {
 
 
     const titleImg = (): string => {
@@ -45,7 +45,7 @@ const Widget1: FC<Props> = ({type, title, time, data, typeData}) => {
             <div className='widget1MainInfo'>
                 <div className='widget1Main'>
                     <div className="time">{timeString()}</div>
-                    <div className="mainData">{data}</div>
+                    <div className="mainData">{value}</div>
                     <div className="typeData">{typeData}</div>
                 </div>
                 <div className='widget1Pictures'>

@@ -5,14 +5,13 @@ import DraggableItemList from "../DraggableItemList/DraggableItemList";
 import './DraggableColumn.css'
 
 interface Props {
-    key: string,
     index: number,
     title: string,
     quotes: Quote[],
 }
 
 //Column
-const DraggableColumn: FC<Props> = ({key, index, title, quotes}) => {
+const DraggableColumn: FC<Props> = ({ index, title, quotes}) => {
     return (
         <Draggable draggableId={title} index={index}>
             {(provided, snapshot) => (

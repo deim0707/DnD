@@ -1,13 +1,16 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 import './Widget2.css'
 
 interface Props {
     title: string,
     time: string
-    isTurn: boolean,
+    value: boolean,
 }
 
-const Widget2: FC<Props> = ({title,isTurn,time}) => {
+const Widget2: FC<Props> = ({title,value,time}) => {
+
+    const [isTurn, setIsTurn] = useState(value);
+
 
     const style = {
         backgroundColor: isTurn? 'darkgreen' : 'red'
@@ -21,9 +24,10 @@ const Widget2: FC<Props> = ({title,isTurn,time}) => {
             <div className='Widget2Main' style={style}>
                 <div
                     className='Widget2Condition'
-
+                    onClick={()=> setIsTurn(isTurn => !isTurn)}
                 >
-                    <div>{isTurn? 'ВКЛ' : 'ВЫКЛ'}</div>
+                    <div>
+                        {isTurn? 'ВКЛ' : 'ВЫКЛ'}</div>
                 </div>
                 <div className='Widget2Date'>{time}</div>
             </div>

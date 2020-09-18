@@ -12,14 +12,18 @@
     background-color: darkgreen;
     height: 150px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-wrap: wrap;
+    /*align-items: flex-start;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
     color: white;
 }
 
 .Widget2Condition {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
+    align-items: flex-end;
+    width: 100%;
 }
 .Widget2Condition div {
     width: 60px;
@@ -27,6 +31,8 @@
 }
 
 .Widget2Date {
-    align-self: flex-end;
-    justify-self: flex-end;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
 }

@@ -2,14 +2,34 @@ import React, {FC} from "react";
 import {Draggable} from "react-beautiful-dnd";
 import {Author} from "../types";
 import './DraggableItem.css'
+import Widget1 from "../Widgets/Widget1/Widget1";
+import Widget2 from "../Widgets/Widget2/Widget2";
+import Widget3 from "../Widgets/Widget3/Widget3";
 
 interface Props {
     quote: Author,
     id: string,
-    idx: number
+    idx: number,
+    type: string
 }
 
-const DraggableItem: FC<Props> = ({quote, id, idx}) => {
+const DraggableItem: FC<Props> = ({quote, id, idx, type}) => {
+
+    const item = () => {
+        switch (type) {
+            case 'Widget1':
+                return <Widget1 title={quote.title} time={quote.time} type={quote.type} value={quote.value} typeData={quote.typeData}/>
+
+            case 'Widget2':
+                return <Widget2 title={quote.title} time={quote.time} value={quote.value}/>
+
+            case 'Widget3':
+                return <Widget3 title={quote.title} type={quote.type} value={quote.value}/>
+
+            default: return null;
+        }
+    }
+
     return (
         <Draggable
             draggableId={id}
@@ -22,9 +42,7 @@ const DraggableItem: FC<Props> = ({quote, id, idx}) => {
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                 >
-                    <p>Имя: {quote.name}</p>
-                    <p>Какой-то текст: {quote.text}</p>
-                    <img src={quote.text} alt={quote.name}/>
+                    {item()}
                 </div>
             )}
         </Draggable>
