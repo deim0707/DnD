@@ -23,8 +23,8 @@ const DraggableItem: FC<Props> = ({quote, id, idx}) => {
                     {...provided.dragHandleProps}
                 >
                     <p>Имя: {quote.name}</p>
-                    <p>Какой-то текст: {quote.avatarUrl}</p>
-                    <img src={quote.avatarUrl} alt={quote.name}/>
+                    <p>Какой-то текст: {quote.text}</p>
+                    <img src={quote.text} alt={quote.name}/>
                 </div>
             )}
         </Draggable>

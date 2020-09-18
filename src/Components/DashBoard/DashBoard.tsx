@@ -18,6 +18,7 @@ const DashBoard: FC<Props> = ({initial}) => {
 
     const onDragEnd = (result: any) => {
         console.log('onDragEnd')
+        console.log(result)
 
         if (result.combine) {
             if (result.type === 'COLUMN') {

@@ -1,12 +1,11 @@
 import React, {FC} from "react";
 import {Droppable} from "react-beautiful-dnd";
-import DraggableItem from "../DraggableItem/DraggableItem";
 import {Quote} from "../types";
+import DraggableItem from "../DraggableItem/DraggableItem";
 import './DraggableItemList.css'
 
 interface Props {
     listId: string,
-    // listType: string,
     quotes: Quote[],
 }
 

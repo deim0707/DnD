@@ -1,6 +1,6 @@
 import {Quote, QuoteMap} from "./types";
 
-export  const reorder = (list: any[], startIndex: number, endIndex: number): any[] => {
+export const reorder = (list: any[], startIndex: number, endIndex: number): any[] => {
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
@@ -17,7 +17,6 @@ export const reorderQuoteMap = ({
     const next: Quote[] = [...quoteMap[destination.droppableId]];
     const target: Quote = current[source.index];
 
-    // moving to same list
     if (source.droppableId === destination.droppableId) {
         const reordered: Quote[] = reorder(
             current,
@@ -33,13 +32,8 @@ export const reorderQuoteMap = ({
         };
     }
 
-    // moving to different list
-
-    // remove from original
     current.splice(source.index, 1);
-    // insert into next
     next.splice(destination.index, 0, target);
-
     const result: QuoteMap = {
         ...quoteMap,
         [source.droppableId]: current,

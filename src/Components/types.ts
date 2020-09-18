@@ -2,7 +2,7 @@
 export type Author = {
     id: string,
     name: string,
-    avatarUrl: string,
+    text: string,
     url: string,
     colors: AuthorColors,
 };

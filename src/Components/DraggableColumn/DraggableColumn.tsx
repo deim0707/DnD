@@ -22,10 +22,8 @@ const DraggableColumn: FC<Props> = ({key, index, title, quotes}) => {
                     {...provided.draggableProps}
                 >
                     <div className='headerDraggableColumn'
-                         // isDragging={snapshot.isDragging}
                     >
                         <h4 className='titleDraggableColumn'
-                            // isDragging={snapshot.isDragging}
                             {...provided.dragHandleProps}
                             aria-label={`${title} quote list`}
                         > {title} </h4>
