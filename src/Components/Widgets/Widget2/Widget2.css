@@ -1,0 +1,32 @@
+.Widget2 {
+    width: 300px;
+}
+
+.Widget2Widget2title {
+    background-color: black;
+    color: white;
+    height: 20px;
+}
+
+.Widget2Main {
+    background-color: darkgreen;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.Widget2Condition {
+    display: flex;
+    justify-content: center;
+}
+.Widget2Condition div {
+    width: 60px;
+    cursor: pointer;
+}
+
+.Widget2Date {
+    align-self: flex-end;
+    justify-self: flex-end;
+}

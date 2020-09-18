@@ -1,0 +1,65 @@
+.Widget1 {
+    width: 200px;
+}
+
+.Widget1 img {
+    height: 30px;
+}
+
+.widget1Title {
+    display: flex;
+    height: 50px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: darkgray;
+}
+
+.widget1Title h6 {
+    font-size: 26px;
+    margin: 0;
+}
+
+.widget1MainInfo {
+    display: flex;
+    justify-content: space-around;
+    background-color: green;
+}
+
+.widget1Main {
+    display: grid;
+    grid-template-areas:
+        ". . . . . time"
+        ". . mainData mainData . ."
+        ". . mainData mainData . ."
+        "typeData . . . . .";
+    /*grid-template-areas:*/
+    /*    ". . time"*/
+    /*    ". mainData ."*/
+    /*    "typeData . ."*/
+    /*;*/
+    color: white;
+    height: 120px;
+}
+
+.widget1Main .time {
+    grid-area: time;
+}
+
+.widget1Main .mainData {
+    font-size: 32px;
+    agrid-area: mainData;
+}
+
+.widget1Main .typeData {
+    grid-area: typeData;
+}
+
+.widget1Pictures {
+    display: flex;
+    flex-direction: column;
+}
+
+.widget1Pictures img {
+    cursor: pointer;
+}
+
