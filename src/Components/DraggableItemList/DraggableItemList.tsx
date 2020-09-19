@@ -3,6 +3,7 @@ import {Droppable} from "react-beautiful-dnd";
 import {Widget} from "../types";
 import DraggableItem from "../DraggableItem/DraggableItem";
 import './DraggableItemList.css'
+import {sortItemsWidgetList} from "../helpersDnD";
 
 interface Props {
     listId: string,
@@ -22,7 +23,7 @@ const DraggableItemList: FC<Props> = ({listId, items}) => {
                     ref={provided.innerRef}
                 >
                     {
-                        items.map((item: any, idx: number) => (
+                        items.sort(sortItemsWidgetList).map((item: any, idx: number) => (
                             <DraggableItem
                                 item={item.content}
                                 type={item.type}

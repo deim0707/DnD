@@ -44,3 +44,9 @@ export const reorderQuoteMap = ({
         quoteMap: result,
     };
 };
+
+export const sortItemsWidgetList = (a: Widget, b: Widget): number => {
+    if (a.ordered < b.ordered) return -1;
+    if (a.ordered > b.ordered) return 1;
+    return 0;
+}
