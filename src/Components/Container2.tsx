@@ -76,7 +76,7 @@ const Container2: FC = () => {
     // console.log(dashboard)
     return (
         <div>
-            <DashBoard initial={dashboard}/>
+            <DashBoard/>
         </div>
     )
 }

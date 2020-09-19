@@ -3,23 +3,25 @@ import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 import {WidgetMap, Widget} from "../types";
 import {reorder, reorderQuoteMap} from "../helpersDnD";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
-import {changeWidgetItem} from "../../Store/actions";
-
 import './DashBoards.css'
 import {useDispatch} from "react-redux";
+import {useShallowEqualSelector} from "../../Store/helpersStore";
+import {getDashboard} from "../../Store/selectors";
+import {changeWidgetItem} from "../../Store/actions";
 
-type Props = {
-    [key: string]: WidgetMap
-}
 
-const DashBoard: FC<Props> = ({initial}) => {
+//сделать: пусть принимает айдшник конкретного дашборда и подгружает инфу о нём
+const DashBoard: FC= () => {
 
     const dispatch = useDispatch();
+    // dispatch(changeWidgetItem(...))
+
+    const dashboard: WidgetMap = useShallowEqualSelector(getDashboard)
 
     //тут определяется порядок вывода виджетов в виджетЛисте
-    const [columns, setColumns] = useState<WidgetMap>(initial);
+    const [columns, setColumns] = useState<WidgetMap>(dashboard);
     //тут определяется порядок вывода стоблцов
-    const [ordered, setOrdered] = useState<string[]>(Object.keys(initial));
+    const [ordered, setOrdered] = useState<string[]>(Object.keys(dashboard));
 
     useEffect(()=>{
         console.log('columns', columns);
