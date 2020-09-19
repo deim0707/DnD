@@ -1,10 +1,12 @@
-import React, {FC, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 import {WidgetMap, Widget} from "../types";
 import {reorder, reorderQuoteMap} from "../helpersDnD";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
+import {changeWidgetItem} from "../../Store/actions";
 
 import './DashBoards.css'
+import {useDispatch} from "react-redux";
 
 type Props = {
     [key: string]: WidgetMap
@@ -12,36 +14,24 @@ type Props = {
 
 const DashBoard: FC<Props> = ({initial}) => {
 
+    const dispatch = useDispatch();
+
+    //тут определяется порядок вывода виджетов в виджетЛисте
     const [columns, setColumns] = useState<WidgetMap>(initial);
+    //тут определяется порядок вывода стоблцов
     const [ordered, setOrdered] = useState<string[]>(Object.keys(initial));
+
+    useEffect(()=>{
+        console.log('columns', columns);
+        console.log('ordered', ordered);
+    })
 
 
     const onDragEnd = (result: any) => {
-        console.log(result)
-
-        if (result.combine) {
-            if (result.type === 'COLUMN') {
-                const shallow: string[] = [...ordered];
-                shallow.splice(result.source.index, 1);
-                setOrdered(shallow);
-                return;
-            }
-
-            const column: Widget[] = columns[result.source.droppableId];
-            const withQuoteRemoved: Widget[] = [...column];
-            withQuoteRemoved.splice(result.source.index, 1);
-            const newColumns: WidgetMap = {
-                ...columns,
-                [result.source.droppableId]: withQuoteRemoved,
-            };
-            setColumns(newColumns);
-            return;
-        }
+        console.log('result', result)
 
         // dropped nowhere
-        if (!result.destination) {
-            return;
-        }
+        if (!result.destination) return;
 
         const source = result.source;
         const destination = result.destination;
@@ -50,9 +40,7 @@ const DashBoard: FC<Props> = ({initial}) => {
         if (
             source.droppableId === destination.droppableId &&
             source.index === destination.index
-        ) {
-            return;
-        }
+        ) return;
 
         // reordering column
         if (result.type === 'COLUMN') {
@@ -61,9 +49,7 @@ const DashBoard: FC<Props> = ({initial}) => {
                 source.index,
                 destination.index,
             );
-
             setOrdered(newOrdered);
-
             return;
         }
 

@@ -9,7 +9,6 @@ export type Content = {
 export type Widget = {
     id: string,
     type: string,
-    ordered: number,
     content: Content,
 }
 
