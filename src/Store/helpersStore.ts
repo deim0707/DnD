@@ -1,7 +1,7 @@
 import { shallowEqual, useSelector } from "react-redux";
-import {WidgetMap} from "../Components/types";
+import {ArrayOfDashBoars} from "../Components/types";
 
 //тут может быть много других возвращаемых значений
-export const useShallowEqualSelector = (selector: any): WidgetMap => {
+export const useShallowEqualSelector = (selector: any): ArrayOfDashBoars => {
     return useSelector(selector, shallowEqual);
 };

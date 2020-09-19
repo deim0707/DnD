@@ -16,3 +16,12 @@ export type WidgetMap = {
     [key: string]: Widget[],
 };
 
+export type Dashboard = {
+    nameOfOffice: string,
+    idDashBoard: string,
+    orderedWidgetList: string[],
+    dataWidget: WidgetMap
+}
+
+export type ArrayOfDashBoars = Dashboard[];
+

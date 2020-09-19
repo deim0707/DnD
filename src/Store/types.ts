@@ -1,6 +1,6 @@
-import {WidgetMap} from "../Components/types";
+import {ArrayOfDashBoars} from "../Components/types";
 
 
 export interface store {
-    dashboardReducer: WidgetMap
+    dashboardReducer: ArrayOfDashBoars
 }

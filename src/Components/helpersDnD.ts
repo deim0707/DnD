@@ -1,4 +1,4 @@
-import {Widget, WidgetMap} from "./types";
+import {ArrayOfDashBoars, Dashboard, Widget, WidgetMap} from "./types";
 
 export const reorder = (list: any[], startIndex: number, endIndex: number): any[] => {
     const result = Array.from(list);
@@ -45,8 +45,12 @@ export const reorderQuoteMap = ({
     };
 };
 
-// export const sortItemsWidgetList = (a: Widget, b: Widget): number => {
-//     if (a.ordered < b.ordered) return -1;
-//     if (a.ordered > b.ordered) return 1;
-//     return 0;
+// export const findDashboardIndex = (state: ArrayOfDashBoars,id: string) => {
+//     let indexOfDashboard = state.findIndex((dashboard: Dashboard) => dashboard.idDashBoard === id);
+//     return {
+//         indexOfDashboard,
+//         state[indexOfDashboard],
+//     }
 // }
+
+export const findDashboardIndex = (state: ArrayOfDashBoars,id: string): number => state.findIndex((dashboard: Dashboard) => dashboard.idDashBoard === id);

@@ -71,12 +71,10 @@ import DashBoard from "./DashBoard/DashBoard";
 
 
 const Container2: FC = () => {
-    const dashboard: WidgetMap = useShallowEqualSelector(getDashboard)
 
-    // console.log(dashboard)
     return (
         <div>
-            <DashBoard/>
+            <DashBoard id={'hjg123jhg123'}/>
         </div>
     )
 }

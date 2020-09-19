@@ -1,6 +1,6 @@
-import {WidgetMap} from "../Components/types";
+import {WidgetMap, Dashboard, ArrayOfDashBoars} from "../Components/types";
 
-export const data: WidgetMap = {
+const dataWidget: WidgetMap = {
     'Dat4ik': [
         {
             id: '234234',
@@ -64,3 +64,14 @@ export const data: WidgetMap = {
         },
     ],
 }
+
+const dashBoard1: Dashboard = {
+    nameOfOffice: 'Оффис на Фаберже',
+    idDashBoard: 'hjg123jhg123',
+    orderedWidgetList: [],
+    dataWidget: dataWidget
+}
+
+export const arrayOfDashBoars: ArrayOfDashBoars = [
+    dashBoard1,
+]

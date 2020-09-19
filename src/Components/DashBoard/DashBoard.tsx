@@ -1,33 +1,34 @@
 import React, {FC, useEffect, useState} from "react";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
-import {WidgetMap, Widget} from "../types";
+import {WidgetMap, ArrayOfDashBoars, Dashboard} from "../types";
 import {reorder, reorderQuoteMap} from "../helpersDnD";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
-import './DashBoards.css'
 import {useDispatch} from "react-redux";
 import {useShallowEqualSelector} from "../../Store/helpersStore";
 import {getDashboard} from "../../Store/selectors";
 import {changeWidgetItem} from "../../Store/actions";
+import './DashBoards.css';
 
 
-//сделать: пусть принимает айдшник конкретного дашборда и подгружает инфу о нём
-const DashBoard: FC= () => {
+interface Props {
+    id: string
+}
+
+const DashBoard: FC<Props> = ({id}) => {
 
     const dispatch = useDispatch();
     // dispatch(changeWidgetItem(...))
-
-    const dashboard: WidgetMap = useShallowEqualSelector(getDashboard)
+    const dashboardAllInfo: Dashboard | any = useShallowEqualSelector(getDashboard).find((dashboard1: Dashboard) => dashboard1.idDashBoard === id);
+    const dashboard = dashboardAllInfo.dataWidget;
 
     //тут определяется порядок вывода виджетов в виджетЛисте
-    const [columns, setColumns] = useState<WidgetMap>(dashboard);
     //тут определяется порядок вывода стоблцов
     const [ordered, setOrdered] = useState<string[]>(Object.keys(dashboard));
 
-    useEffect(()=>{
-        console.log('columns', columns);
+    useEffect(() => {
+        console.log('dashboard', dashboard);
         console.log('ordered', ordered);
     })
-
 
     const onDragEnd = (result: any) => {
         console.log('result', result)
@@ -56,19 +57,22 @@ const DashBoard: FC= () => {
         }
 
         const data = reorderQuoteMap({
-            quoteMap: columns,
+            quoteMap: dashboard,
             source,
             destination,
         });
 
-        setColumns(data.quoteMap);
+        // setColumns(data.quoteMap);
+        dispatch(changeWidgetItem(id, data.quoteMap))
     };
 
 
     return (
         <>
+            {/*<h2>{dashboardAllInfo.nameOfOffice}</h2>*/}
             <DragDropContext
                 onDragEnd={onDragEnd}
+                // onDragEnd={()=>{}}
             >
                 <Droppable
                     droppableId="board"
@@ -88,7 +92,7 @@ const DashBoard: FC= () => {
                                     key={key}
                                     index={index}
                                     title={key} /*<= заголовок из ключа объекта*/
-                                    items={columns[key]} /*<= здесь конкретный объект*/
+                                    items={dashboard[key]} /*<= здесь конкретный объект*/
                                 />
                             ))}
                             {provided.placeholder}
