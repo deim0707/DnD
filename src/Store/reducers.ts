@@ -10,10 +10,8 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
             // return {...state, ...action.payload};
             //тут вернётся индекс нужного мне айтема в массиве (стейте):
             const index: number = findDashboardIndex(state, action.id);
-            console.log(action.payload)
-            console.log(state)
-            // state[index].dataWidget = action.payload;
-            // const newState
+            console.log('action.payload', action.payload)
+            console.log('state In Reducer', state)
             const newArr = state.slice();
             newArr[index].dataWidget = action.payload;
             console.log(newArr[index].dataWidget)

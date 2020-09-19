@@ -3,7 +3,7 @@ import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 import {WidgetMap, ArrayOfDashBoars, Dashboard} from "../types";
 import {reorder, reorderQuoteMap} from "../helpersDnD";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
-import {useDispatch} from "react-redux";
+import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import {useShallowEqualSelector} from "../../Store/helpersStore";
 import {getDashboard} from "../../Store/selectors";
 import {changeWidgetItem} from "../../Store/actions";
@@ -18,20 +18,20 @@ const DashBoard: FC<Props> = ({id}) => {
 
     const dispatch = useDispatch();
     // dispatch(changeWidgetItem(...))
-    const dashboardAllInfo: Dashboard | any = useShallowEqualSelector(getDashboard).find((dashboard1: Dashboard) => dashboard1.idDashBoard === id);
+    // const dashboardAllInfo: Dashboard | any = useShallowEqualSelector(getDashboard).find((dashboard1: Dashboard) => dashboard1.idDashBoard === id);
+    const dashboardAllInfo: Dashboard = useSelector((state: any) => state.dashboardReducer, shallowEqual).find((dashboard1: Dashboard) => dashboard1.idDashBoard === id);
     const dashboard = dashboardAllInfo.dataWidget;
 
-    //тут определяется порядок вывода виджетов в виджетЛисте
-    //тут определяется порядок вывода стоблцов
+
     const [ordered, setOrdered] = useState<string[]>(Object.keys(dashboard));
 
     useEffect(() => {
-        console.log('dashboard', dashboard);
-        console.log('ordered', ordered);
+        console.log('dashboard In Component', dashboard);
+        // console.log('ordered', ordered);
     })
 
     const onDragEnd = (result: any) => {
-        console.log('result', result)
+        // console.log('result', result)
 
         // dropped nowhere
         if (!result.destination) return;
@@ -63,7 +63,10 @@ const DashBoard: FC<Props> = ({id}) => {
         });
 
         // setColumns(data.quoteMap);
-        dispatch(changeWidgetItem(id, data.quoteMap))
+        //data.quoteMap - это переставленный виджетЛист
+        console.log('data.quoteMap', data.quoteMap);
+        dispatch(changeWidgetItem(id, data.quoteMap));
+        //тут вызовем отправку изменений на сервер
     };
 
 
