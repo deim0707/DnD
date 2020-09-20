@@ -1,4 +1,5 @@
 import {WidgetMap} from "../Components/types";
+import {ChangeWidgetItem} from "../Components/types";
 
 export enum actions {
     CHANGE_WIDGET_ITEM = 'CHANGE_WIDGET_ITEM',
@@ -8,7 +9,8 @@ export enum actions {
 export const changeWidgetItem = (id: string, payload: WidgetMap) => {
     return {
         type: actions.CHANGE_WIDGET_ITEM,
-        id,
-        payload
+        id: id,
+        payload: payload
     }
 }
+// export type Actions = ChangeWidgetItem

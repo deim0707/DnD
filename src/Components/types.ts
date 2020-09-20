@@ -1,3 +1,5 @@
+import {actions} from "../Store/actions";
+
 export type Content = {
     title: string,
     value?: string | boolean | any,
@@ -24,4 +26,11 @@ export type Dashboard = {
 }
 
 export type ArrayOfDashBoars = Dashboard[];
+
+
+export interface ChangeWidgetItem {
+    type: actions.CHANGE_WIDGET_ITEM,
+    id: string,
+    payload: WidgetMap
+}
 

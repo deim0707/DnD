@@ -53,4 +53,4 @@ export const reorderQuoteMap = ({
 //     }
 // }
 
-export const findDashboardIndex = (state: ArrayOfDashBoars,id: string): number => state.findIndex((dashboard: Dashboard) => dashboard.idDashBoard === id);
+// export const findDashboardIndex = (state: ArrayOfDashBoars,id: string): number => state.findIndex((dashboard: Dashboard) => dashboard.idDashBoard === id);

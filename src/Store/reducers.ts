@@ -1,23 +1,25 @@
-import {ArrayOfDashBoars} from "../Components/types";
+import {ArrayOfDashBoars, Dashboard} from "../Components/types";
 import {actions} from "./actions";
 import {arrayOfDashBoars} from './initialState';
-import {findDashboardIndex} from "../Components/helpersDnD";
 
 //добавить тип экшена
 const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: any): ArrayOfDashBoars => {
     switch (action.type) {
+        // case actions.CHANGE_WIDGET_ITEM: {
+        //     const index: number = findDashboardIndex(state, action.id);
+        //     const newArr = state.slice();
+        //     newArr[index].dataWidget = action.payload;
+        //     return newArr;
+        // }
         case actions.CHANGE_WIDGET_ITEM: {
-            // return {...state, ...action.payload};
-            //тут вернётся индекс нужного мне айтема в массиве (стейте):
-            const index: number = findDashboardIndex(state, action.id);
-            console.log('action.payload', action.payload)
-            console.log('state In Reducer', state)
-            const newArr = state.slice();
-            newArr[index].dataWidget = action.payload;
-            console.log(newArr[index].dataWidget)
-            return newArr;
+            return state.map((item: Dashboard) => {
+                if (item.idDashBoard === action.id) {
+                    return {...item, dataWidget: action.payload}
+                } else return item;
+            })
         }
-        default: return state;
+        default:
+            return state;
     }
 }
 
