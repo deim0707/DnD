@@ -63,12 +63,25 @@ const dataWidget: WidgetMap = {
             }
         },
     ],
+    'Ещё один датчик': [
+        {
+            id: '213ыыыы',
+            type: 'Widget1',
+            content: {
+                title: 'Температура',
+                value: '22.00',
+                type: 'asteroid',
+                time: Date.now(),
+                typeData: '℃',
+            }
+        },
+    ]
 }
 
 const dashBoard1: Dashboard = {
     idDashBoard: 'hjg123jhg123',
     nameOfOffice: 'Оффис на Фаберже',
-    orderedWidgetList: ["Dat4ik", "Крутой датчик"],
+    orderedWidgetList: ["Dat4ik", "Крутой датчик", "Ещё один датчик"],
     dataWidget: dataWidget,
 }
 

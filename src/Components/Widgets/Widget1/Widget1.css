@@ -1,5 +1,5 @@
 .Widget1 {
-    width: 200px;
+    width: 100%;
 }
 
 .Widget1 img {
@@ -47,7 +47,7 @@
 
 .widget1Main .mainData {
     font-size: 32px;
-    agrid-area: mainData;
+    grid-area: mainData;
 }
 
 .widget1Main .typeData {
