@@ -66,10 +66,10 @@ const dataWidget: WidgetMap = {
 }
 
 const dashBoard1: Dashboard = {
-    nameOfOffice: 'Оффис на Фаберже',
     idDashBoard: 'hjg123jhg123',
-    orderedWidgetList: [],
-    dataWidget: dataWidget
+    nameOfOffice: 'Оффис на Фаберже',
+    orderedWidgetList: ["Dat4ik", "Крутой датчик"],
+    dataWidget: dataWidget,
 }
 
 export const arrayOfDashBoars: ArrayOfDashBoars = [

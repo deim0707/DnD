@@ -1,12 +1,10 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, useEffect} from "react";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
-import {WidgetMap, ArrayOfDashBoars, Dashboard} from "../types";
+import {WidgetMap, Dashboard} from "../types";
 import {reorder, reorderQuoteMap} from "../helpersDnD";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
-import {shallowEqual, useDispatch, useSelector} from "react-redux";
-import {useShallowEqualSelector} from "../../Store/helpersStore";
-import {getDashboard} from "../../Store/selectors";
-import {changeWidgetItem} from "../../Store/actions";
+import {useDispatch, useSelector} from "react-redux";
+import {changeWidgetItem, setOrdered} from "../../Store/actions";
 import './DashBoards.css';
 
 
@@ -17,16 +15,15 @@ interface Props {
 const DashBoard: FC<Props> = ({id}) => {
 
     const dispatch = useDispatch();
-    // dispatch(changeWidgetItem(...))
     // const dashboardAllInfo: Dashboard | any = useShallowEqualSelector(getDashboard).find((dashboard1: Dashboard) => dashboard1.idDashBoard === id);
-    const dashboardAllInfo: Dashboard = useSelector((state: any) => state.dashboardReducer, shallowEqual).find((dashboard1: Dashboard) => dashboard1.idDashBoard === id);
-    const dashboard = dashboardAllInfo.dataWidget;
+    const dashboardAllInfo: Dashboard = useSelector((state: any) => state.dashboardReducer).find((dashboard1: Dashboard) => dashboard1.idDashBoard === id);
 
+    const dashboard: WidgetMap = dashboardAllInfo.dataWidget;
 
-    const [ordered, setOrdered] = useState<string[]>(Object.keys(dashboard));
+    const ordered: string[] = dashboardAllInfo.orderedWidgetList
 
     useEffect(() => {
-        console.log('dashboard In Component', dashboard);
+        // console.log('dashboard In Component', dashboard);
         // console.log('ordered', ordered);
     })
 
@@ -52,7 +49,7 @@ const DashBoard: FC<Props> = ({id}) => {
                 source.index,
                 destination.index,
             );
-            setOrdered(newOrdered);
+            dispatch(setOrdered(id, newOrdered));
             return;
         }
 
@@ -62,9 +59,7 @@ const DashBoard: FC<Props> = ({id}) => {
             destination,
         });
 
-        // setColumns(data.quoteMap);
         //data.quoteMap - это переставленный виджетЛист
-        console.log('data.quoteMap', data.quoteMap);
         dispatch(changeWidgetItem(id, data.quoteMap));
         //тут вызовем отправку изменений на сервер
     };
@@ -72,10 +67,9 @@ const DashBoard: FC<Props> = ({id}) => {
 
     return (
         <>
-            {/*<h2>{dashboardAllInfo.nameOfOffice}</h2>*/}
+            <h2>{dashboardAllInfo.nameOfOffice}</h2>
             <DragDropContext
                 onDragEnd={onDragEnd}
-                // onDragEnd={()=>{}}
             >
                 <Droppable
                     droppableId="board"

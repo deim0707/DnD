@@ -5,12 +5,6 @@ import {arrayOfDashBoars} from './initialState';
 //добавить тип экшена
 const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: any): ArrayOfDashBoars => {
     switch (action.type) {
-        // case actions.CHANGE_WIDGET_ITEM: {
-        //     const index: number = findDashboardIndex(state, action.id);
-        //     const newArr = state.slice();
-        //     newArr[index].dataWidget = action.payload;
-        //     return newArr;
-        // }
         case actions.CHANGE_WIDGET_ITEM: {
             return state.map((item: Dashboard) => {
                 if (item.idDashBoard === action.id) {
@@ -18,6 +12,16 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
                 } else return item;
             })
         }
+
+        case actions.CHANGE_WIDGET_LIST_ORDER: {
+            return state.map((item)=>{
+                if (item.idDashBoard === action.id) {
+                    return {...item, orderedWidgetList: action.payload}
+                }
+                else return item;
+            })
+        }
+
         default:
             return state;
     }
