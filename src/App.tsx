@@ -1,11 +1,11 @@
 import React from 'react';
-import Container2 from './Components/Container2';
+import DashBoard from "./Components/DashBoard/DashBoard";
 
 
 function App() {
     return (
-        <div className="App" style={{display: 'flex'}}>
-            <Container2/>
+        <div className="App">
+            <DashBoard id={'hjg123jhg123'}/>
         </div>
     );
 }

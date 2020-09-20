@@ -22,7 +22,7 @@ const DraggableItemList: FC<Props> = ({listId, items}) => {
                     ref={provided.innerRef}
                 >
                     {
-                        items.map((item: any, idx: number) => (
+                        items.map((item: Widget, idx: number) => (
                             <DraggableItem
                                 item={item.content}
                                 type={item.type}

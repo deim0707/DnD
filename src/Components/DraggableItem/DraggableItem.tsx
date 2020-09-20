@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {Draggable} from "react-beautiful-dnd";
-import {Content} from "../types";
+import {Content, Widget, } from "../types";
 import './DraggableItem.css'
 import Widget1 from "../Widgets/Widget1/Widget1";
 import Widget2 from "../Widgets/Widget2/Widget2";

@@ -67,7 +67,13 @@ const DashBoard: FC<Props> = ({id}) => {
 
     return (
         <>
-            <h2>{dashboardAllInfo.nameOfOffice}</h2>
+            <div className="headerDashboard">
+                <h2>{dashboardAllInfo.nameOfOffice}</h2>
+                <button
+                    onClick={()=> console.log('Нажали добавить')}
+                >
+                    Добавить виджет-лист</button>
+            </div>
             <DragDropContext
                 onDragEnd={onDragEnd}
             >

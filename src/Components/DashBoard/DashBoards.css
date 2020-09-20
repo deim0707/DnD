@@ -1,7 +1,14 @@
 .container {
     background-color: gray;
-    /*min-height: 100vh;*/
-    /*display: inline-flex;*/
-    display: flex;
+    display: inline-flex;
+}
 
+.headerDashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerDashboard button {
+    height: 40px;
 }

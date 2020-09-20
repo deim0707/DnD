@@ -8,7 +8,7 @@ interface Props {
     time: number,
     type: string,
     value: string,
-    typeData: string
+    typeData: string,
 }
 
 const Widget1: FC<Props> = ({type, title, time, value, typeData}) => {

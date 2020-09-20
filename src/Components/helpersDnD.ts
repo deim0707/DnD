@@ -44,22 +44,3 @@ export const reorderQuoteMap = ({
         quoteMap: result,
     };
 };
-
-// export const findDashboardIndex = (state: ArrayOfDashBoars,id: string) => {
-//     let indexOfDashboard = state.findIndex((dashboard: Dashboard) => dashboard.idDashBoard === id);
-//     return {
-//         indexOfDashboard,
-//         state[indexOfDashboard],
-//     }
-// }
-
-// export const findDashboardIndex = (state: ArrayOfDashBoars,id: string): number => state.findIndex((dashboard: Dashboard) => dashboard.idDashBoard === id);
-
-// export const changeDashBoardArray = (state: ArrayOfDashBoars, action: any, keyOfObject: any) => {
-//     return state.map((item: Dashboard)=>{
-//         if (item.idDashBoard === action.id) {
-//             return {...item, keyOfObject: action.payload}
-//         }
-//         else return item;
-//     })
-// }
