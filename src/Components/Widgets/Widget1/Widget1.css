@@ -32,11 +32,6 @@
         ". . mainData mainData . ."
         ". . mainData mainData . ."
         "typeData . . . . .";
-    /*grid-template-areas:*/
-    /*    ". . time"*/
-    /*    ". mainData ."*/
-    /*    "typeData . ."*/
-    /*;*/
     color: white;
     height: 120px;
 }
