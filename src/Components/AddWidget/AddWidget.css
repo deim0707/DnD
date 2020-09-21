@@ -1,0 +1,41 @@
+.AddWidgetWrapper {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+
+    z-index: 99;
+
+    background-color: rgba(133, 125, 125, .9);;
+}
+.AddWidget {
+    width: 400px;
+    height: 120px;
+
+    margin-top: 50px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: beige;
+
+}
+
+.AddWidget label {
+    margin-top: 20px;
+}
+
+.AddWidget label span {
+    margin-right: 10px;
+}
+
+.AddWidget  .buttons {
+    margin-top: 30px;
+    width: 250px;
+    display: flex;
+    justify-content: space-around;
+}

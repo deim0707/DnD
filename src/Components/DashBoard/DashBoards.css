@@ -1,3 +1,8 @@
+.DashBoard {
+    z-index: 1;
+    position: relative;
+}
+
 .container {
     background-color: gray;
     display: inline-flex;

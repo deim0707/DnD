@@ -1,10 +1,11 @@
-import React, {FC, useEffect} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 import {WidgetMap, Dashboard} from "../types";
 import {reorder, reorderQuoteMap} from "../helpersDnD";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
 import {useDispatch, useSelector} from "react-redux";
 import {changeWidgetItem, setOrdered} from "../../Store/actions";
+import AddWidget from "../AddWidget/AddWidget";
 import './DashBoards.css';
 
 
@@ -14,12 +15,13 @@ interface Props {
 
 const DashBoard: FC<Props> = ({id}) => {
 
+    const [isShowAddWidgetList, setIsShowAddWidgetList] = useState<boolean>(true)
+
     const dispatch = useDispatch();
     // const dashboardAllInfo: Dashboard | any = useShallowEqualSelector(getDashboard).find((dashboard1: Dashboard) => dashboard1.idDashBoard === id);
     const dashboardAllInfo: Dashboard = useSelector((state: any) => state.dashboardReducer).find((dashboard1: Dashboard) => dashboard1.idDashBoard === id);
 
     const dashboard: WidgetMap = dashboardAllInfo.dataWidget;
-
     const ordered: string[] = dashboardAllInfo.orderedWidgetList
 
     useEffect(() => {
@@ -66,11 +68,14 @@ const DashBoard: FC<Props> = ({id}) => {
 
 
     return (
-        <>
+        <div className='Dashboard'>
+
+            {isShowAddWidgetList ? <AddWidget changeVisibility={setIsShowAddWidgetList}/> : null}
+
             <div className="headerDashboard">
                 <h2>{dashboardAllInfo.nameOfOffice}</h2>
                 <button
-                    onClick={()=> console.log('Нажали добавить')}
+                    onClick={()=> setIsShowAddWidgetList(true)}
                 >
                     Добавить виджет-лист</button>
             </div>
@@ -103,7 +108,7 @@ const DashBoard: FC<Props> = ({id}) => {
                     )}
                 </Droppable>
             </DragDropContext>
-        </>
+        </div>
     )
 }
 
