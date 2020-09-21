@@ -8,12 +8,20 @@ interface Props {
     index: number,
     title: string,
     items: Widget[],
+    isColumnDragDisabled?: boolean,
+    typeDraggableItemList?: string
 }
 
 //Column
-const DraggableColumn: FC<Props> = ({ index, title, items}) => {
+const DraggableColumn: FC<Props> = ({
+                                        index,
+                                        title,
+                                        items,
+                                        isColumnDragDisabled = false,
+                                        typeDraggableItemList=''
+                                    }) => {
     return (
-        <Draggable draggableId={title} index={index}>
+        <Draggable draggableId={title} index={index} isDragDisabled={isColumnDragDisabled}>
             {(provided, snapshot) => (
                 <div
                     className='containerDraggableColumn'
@@ -29,7 +37,7 @@ const DraggableColumn: FC<Props> = ({ index, title, items}) => {
                     </div>
                     <DraggableItemList
                         listId={title}
-                        // listType="QUOTE"
+                        listType={typeDraggableItemList}
                         items={items}
                     />
                 </div>

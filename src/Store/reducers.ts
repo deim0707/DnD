@@ -14,11 +14,26 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
         }
 
         case actions.CHANGE_WIDGET_LIST_ORDER: {
-            return state.map((item)=>{
+            return state.map((item) => {
                 if (item.idDashBoard === action.id) {
                     return {...item, orderedWidgetList: action.payload}
-                }
-                else return item;
+                } else return item;
+            })
+        }
+
+        case actions.ADD_NEW_WIDGET: {
+            return state.map((item) => {
+                console.log('Сработал ADD_NEW_WIDGET')
+                if (item.idDashBoard === action.id) {
+                    return {
+                        ...item,
+                        orderedWidgetList: [...item.orderedWidgetList, action.payload],
+                        dataWidget: {
+                            ...item.dataWidget,
+                            [action.payload]: []
+                        }
+                    }
+                } else return item;
             })
         }
 

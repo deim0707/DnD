@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {changeWidgetItem, setOrdered} from "../../Store/actions";
 import AddWidget from "../AddWidget/AddWidget";
 import './DashBoards.css';
+import TemplateColumn from "../TemplateColumn/TemplateColumn";
 
 
 interface Props {
@@ -15,7 +16,7 @@ interface Props {
 
 const DashBoard: FC<Props> = ({id}) => {
 
-    const [isShowAddWidgetList, setIsShowAddWidgetList] = useState<boolean>(true)
+    const [isShowAddWidgetList, setIsShowAddWidgetList] = useState<boolean>(false);
 
     const dispatch = useDispatch();
     // const dashboardAllInfo: Dashboard | any = useShallowEqualSelector(getDashboard).find((dashboard1: Dashboard) => dashboard1.idDashBoard === id);
@@ -55,6 +56,8 @@ const DashBoard: FC<Props> = ({id}) => {
             return;
         }
 
+        if (result.type === 'TEMPLATE') console.log('TEMPLATE DRAG')
+
         const data = reorderQuoteMap({
             quoteMap: dashboard,
             source,
@@ -63,22 +66,26 @@ const DashBoard: FC<Props> = ({id}) => {
 
         //data.quoteMap - это переставленный виджетЛист
         dispatch(changeWidgetItem(id, data.quoteMap));
-        //тут вызовем отправку изменений на сервер
+        //тут вызовем отправку изменений на сервер //или в колонках
     };
-
 
     return (
         <div className='Dashboard'>
 
-            {isShowAddWidgetList ? <AddWidget changeVisibility={setIsShowAddWidgetList}/> : null}
+            {isShowAddWidgetList ? <AddWidget
+                changeVisibility={setIsShowAddWidgetList}
+                id = {id}
+            /> : null}
 
             <div className="headerDashboard">
                 <h2>{dashboardAllInfo.nameOfOffice}</h2>
                 <button
-                    onClick={()=> setIsShowAddWidgetList(true)}
+                    onClick={() => setIsShowAddWidgetList(true)}
                 >
-                    Добавить виджет-лист</button>
+                    Добавить виджет-лист
+                </button>
             </div>
+
             <DragDropContext
                 onDragEnd={onDragEnd}
             >
@@ -86,7 +93,6 @@ const DashBoard: FC<Props> = ({id}) => {
                     droppableId="board"
                     type="COLUMN"
                     direction="horizontal"
-
                 >
                     {(provided) => (
                         <div
@@ -94,6 +100,9 @@ const DashBoard: FC<Props> = ({id}) => {
                             ref={provided.innerRef}
                             {...provided.droppableProps}
                         >
+
+                            <TemplateColumn/>
+
                             {/*проходимся столько раз, сколько ключей в поступившем объекте:*/}
                             {ordered.map((key: string, index: number) => (
                                 <DraggableColumn

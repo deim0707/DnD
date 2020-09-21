@@ -1,13 +1,25 @@
 import React, {FC, useState} from "react";
+import {useDispatch} from "react-redux";
+import {addNewWidget} from "../../Store/actions";
 import './AddWidget.css';
 
 interface Props {
-    changeVisibility: Function
+    changeVisibility: Function,
+    id: string
 }
 
-const AddWidget: FC<Props> = ({changeVisibility}) => {
+const AddWidget: FC<Props> = ({changeVisibility, id}) => {
 
-    const [valueNameWidget, setValueNameWidget] = useState('');
+    const [nameNewWidget, setNameNewWidget] = useState('')
+
+    const dispatch = useDispatch();
+
+    const addWidget = () => {
+        dispatch(addNewWidget(id, nameNewWidget))
+        changeVisibility(false)
+        setNameNewWidget('')
+    }
+
 
     return (
         <div className='AddWidgetWrapper'>
@@ -17,15 +29,15 @@ const AddWidget: FC<Props> = ({changeVisibility}) => {
                     <span>Введите имя виджета:</span>
                     <input
                         type="text"
-                        value={valueNameWidget}
-                        onChange={(e) => setValueNameWidget(e.target.value)}
+                        value={nameNewWidget}
+                        onChange={(e) => setNameNewWidget(e.target.value)}
                     />
                 </label>
                 <div className='buttons'>
-                    <button onClick={() => changeVisibility(false)} >
+                    <button onClick={() => changeVisibility(false)}>
                         Закрыть
                     </button>
-                    <button>
+                    <button onClick={addWidget}>
                         Добавить
                     </button>
                 </div>

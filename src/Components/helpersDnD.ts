@@ -8,6 +8,14 @@ export const reorder = (list: any[], startIndex: number, endIndex: number): any[
     return result;
 };
 
+// export const reorder = (list: any[], startIndex: number, endIndex: number): any[] => {
+//     const result = Array.from(list);
+//     const removed = result[startIndex];
+//     result.splice(endIndex, 0, removed);
+//
+//     return result;
+// };
+
 export const reorderQuoteMap = ({
                                     quoteMap,
                                     source,
