@@ -116,8 +116,8 @@ const DashBoard: FC<Props> = ({id}) => {
                                 <DraggableColumn
                                     key={key}
                                     index={index}
-                                    title={key} /*<= заголовок из ключа объекта*/
-                                    items={dashboard[key]} /*<= здесь конкретный объект*/
+                                    title={dashboard[key].name} /*<= заголовок из ключа объекта*/
+                                    items={dashboard[key].widgets} /*<= здесь конкретный объект*/
                                 />
                             ))}
                             {provided.placeholder}

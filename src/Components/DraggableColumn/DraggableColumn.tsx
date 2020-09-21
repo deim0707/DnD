@@ -12,7 +12,6 @@ interface Props {
     typeDraggableItemList?: string
 }
 
-//Column
 const DraggableColumn: FC<Props> = ({
                                         index,
                                         title,

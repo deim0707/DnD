@@ -37,7 +37,10 @@ export type Widget = {
 }
 
 export type WidgetMap = {
-    [key: string]: Widget[],
+    [key: string]: {
+        name: string,
+        widgets: Widget[],
+    },
 };
 
 export type Dashboard = {
@@ -48,11 +51,3 @@ export type Dashboard = {
 }
 
 export type ArrayOfDashBoars = Dashboard[];
-
-
-export interface ChangeWidgetItem {
-    type: actions.CHANGE_WIDGET_ITEM,
-    id: string,
-    payload: WidgetMap
-}
-

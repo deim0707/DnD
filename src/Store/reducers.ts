@@ -21,6 +21,7 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
             })
         }
 
+        //переделать на новую структуру инитиалСтейта
         case actions.ADD_NEW_WIDGET: {
             return state.map((item) => {
                 if (item.idDashBoard === action.id) {
