@@ -65,13 +65,13 @@ const DashBoard: FC<Props> = ({id}) => {
         }
 
         const data = reorderQuoteMap({
-            quoteMap: dashboard,
+            quoteMap: dashboard.widgets,
             source,
             destination,
         });
 
         //data.quoteMap - это переставленный виджетЛист
-        dispatch(changeWidgetItem(id, data.quoteMap));
+        // dispatch(changeWidgetItem(id, data.quoteMap));
         //тут вызовем отправку изменений на сервер //или в колонках
 
 
