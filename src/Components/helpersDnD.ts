@@ -13,9 +13,14 @@ export const reorderQuoteMap = ({
                                     source,
                                     destination,
                                 }: any) => {
-    const current: Widget[] = [...quoteMap[source.droppableId]];
-    const next: Widget[] = [...quoteMap[destination.droppableId]];
+    // const current: Widget[] = [...quoteMap[source.droppableId]];
+    console.log('quoteMap',quoteMap)
+    const current: Widget[] = quoteMap[source.droppableId].widgets;
+    console.log('current', current)
+    const next: Widget[] = quoteMap[destination.droppableId].widgets;
+    console.log('next', next)
     const target: Widget = current[source.index];
+    console.log('target', target)
 
     if (source.droppableId === destination.droppableId) {
         const reordered: Widget[] = reorder(

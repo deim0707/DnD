@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useState} from "react";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
-import {WidgetMap, Dashboard} from "../types";
+import {WidgetMap, Dashboard, Widget} from "../types";
 import {reorder, reorderQuoteMap, reorderQuoteMap2} from "../helpersDnD";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
 import {useDispatch, useSelector} from "react-redux";
@@ -63,15 +63,36 @@ const DashBoard: FC<Props> = ({id}) => {
             dispatch(addNewWidget(id, 'nameNewWidget'))
             return;
         }
+        const findIndex = () => {
+            const currentSource = {index: result.source.index, droppableId: '',};
+            const currentDestination = {index: result.destination.index, droppableId: '',};
 
-        const data = reorderQuoteMap({
-            quoteMap: dashboard.widgets,
-            source,
-            destination,
-        });
+            for (let item in dashboard) {
+                if (dashboard[item].name === result.source.droppableId) {
+                    currentSource.droppableId = item;
+                }
+                if (dashboard[item].name === result.destination.droppableId) {
+                    currentDestination.droppableId = item;
+                }
+            }
+            let returnObj = {
+                quoteMap: dashboard,
+                source: currentSource,
+                destination: currentDestination,
+            }
+            console.log('returnObj',returnObj)
+            return returnObj;
+        }
+
+        // const data = reorderQuoteMap({
+        //     quoteMap: dashboard.widgets,
+        //     source,
+        //     destination,
+        // });
+        const data = reorderQuoteMap(findIndex());
 
         //data.quoteMap - это переставленный виджетЛист
-        // dispatch(changeWidgetItem(id, data.quoteMap));
+        dispatch(changeWidgetItem(id, data.quoteMap));
         //тут вызовем отправку изменений на сервер //или в колонках
 
 
@@ -82,7 +103,7 @@ const DashBoard: FC<Props> = ({id}) => {
 
             {isShowAddWidgetList ? <AddWidget
                 changeVisibility={setIsShowAddWidgetList}
-                id = {id}
+                id={id}
             /> : null}
 
             <div className="headerDashboard">

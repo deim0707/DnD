@@ -103,7 +103,7 @@ const dataWidget: WidgetMap = {
         ],
     },
     'b123123ddsad': {
-        name: 'Крутой датчик',
+        name: 'Крутойqqqq датчик',
         widgets: [
             {
                 id: '234s2s234',

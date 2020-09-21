@@ -8,7 +8,11 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
         case actions.CHANGE_WIDGET_ITEM: {
             return state.map((item: Dashboard) => {
                 if (item.idDashBoard === action.id) {
-                    return {...item, dataWidget: action.payload}
+                    return {
+                        ...item, dataWidget: {
+                            ...item.dataWidget, widgets: action.payload
+                        }
+                    }
                 } else return item;
             })
         }
