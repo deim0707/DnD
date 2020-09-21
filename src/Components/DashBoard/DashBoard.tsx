@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from "react";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 import {WidgetMap, Dashboard} from "../types";
-import {reorder, reorderQuoteMap} from "../helpersDnD";
+import {reorder, reorderQuoteMap, reorderQuoteMap2} from "../helpersDnD";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
 import {useDispatch, useSelector} from "react-redux";
 import {changeWidgetItem, setOrdered} from "../../Store/actions";
@@ -56,7 +56,16 @@ const DashBoard: FC<Props> = ({id}) => {
             return;
         }
 
-        if (result.type === 'TEMPLATE') console.log('TEMPLATE DRAG')
+        if (result.type === 'TEMPLATE') {
+            console.log('TEMPLATE DRAG')
+            const data = reorderQuoteMap2({
+                quoteMap: dashboard,
+                source,
+                destination,
+            })
+            dispatch(changeWidgetItem(id, data.quoteMap));
+            return;
+        }
 
         const data = reorderQuoteMap({
             quoteMap: dashboard,
@@ -67,6 +76,8 @@ const DashBoard: FC<Props> = ({id}) => {
         //data.quoteMap - это переставленный виджетЛист
         dispatch(changeWidgetItem(id, data.quoteMap));
         //тут вызовем отправку изменений на сервер //или в колонках
+
+
     };
 
     return (
@@ -101,7 +112,7 @@ const DashBoard: FC<Props> = ({id}) => {
                             {...provided.droppableProps}
                         >
 
-                            <TemplateColumn/>
+                            {/*<TemplateColumn/>*/}
 
                             {/*проходимся столько раз, сколько ключей в поступившем объекте:*/}
                             {ordered.map((key: string, index: number) => (

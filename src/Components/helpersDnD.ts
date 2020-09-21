@@ -8,14 +8,6 @@ export const reorder = (list: any[], startIndex: number, endIndex: number): any[
     return result;
 };
 
-// export const reorder = (list: any[], startIndex: number, endIndex: number): any[] => {
-//     const result = Array.from(list);
-//     const removed = result[startIndex];
-//     result.splice(endIndex, 0, removed);
-//
-//     return result;
-// };
-
 export const reorderQuoteMap = ({
                                     quoteMap,
                                     source,
@@ -27,6 +19,52 @@ export const reorderQuoteMap = ({
 
     if (source.droppableId === destination.droppableId) {
         const reordered: Widget[] = reorder(
+            current,
+            source.index,
+            destination.index,
+        );
+        const result: WidgetMap = {
+            ...quoteMap,
+            [source.droppableId]: reordered,
+        };
+        return {
+            quoteMap: result,
+        };
+    }
+
+    current.splice(source.index, 1);
+    next.splice(destination.index, 0, target);
+    const result: WidgetMap = {
+        ...quoteMap,
+        [source.droppableId]: current,
+        [destination.droppableId]: next,
+    };
+
+    return {
+        quoteMap: result,
+    };
+};
+
+
+export const reorder2 = (list: any[], startIndex: number, endIndex: number): any[] => {
+    const result = Array.from(list);
+    const removed = result[startIndex];
+    result.splice(endIndex, 0, removed);
+
+    return result;
+};
+
+export const reorderQuoteMap2 = ({
+                                    quoteMap,
+                                    source,
+                                    destination,
+                                }: any) => {
+    const current: Widget[] = [...quoteMap[source.droppableId]];
+    const next: Widget[] = [...quoteMap[destination.droppableId]];
+    const target: Widget = current[source.index];
+
+    if (source.droppableId === destination.droppableId) {
+        const reordered: Widget[] = reorder2(
             current,
             source.index,
             destination.index,
