@@ -23,7 +23,6 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
 
         case actions.ADD_NEW_WIDGET: {
             return state.map((item) => {
-                console.log('Сработал ADD_NEW_WIDGET')
                 if (item.idDashBoard === action.id) {
                     return {
                         ...item,
@@ -36,6 +35,20 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
                 } else return item;
             })
         }
+
+        // case action.ADD_NEW_MINIWIDGET: {
+        //     return state.map((item) => {
+        //         if (item.idDashBoard === action.id) {
+        //             return {
+        //                 ...item,
+        //                 dataWidget: {
+        //                     ...item.dataWidget,
+        //                     [action.payload.destination]: ///тут новый объект виджета
+        //                 }
+        //             }
+        //         } else return item;
+        //     })
+        // }
 
         default:
             return state;

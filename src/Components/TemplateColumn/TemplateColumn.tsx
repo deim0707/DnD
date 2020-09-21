@@ -4,7 +4,7 @@ import DraggableColumn from "../DraggableColumn/DraggableColumn";
 
 const data = [
     {
-        id: '213ssssыыыы',
+        id: 'Widget1',
         type: 'Widget1',
         content: {
             title: 'Температура',
@@ -26,7 +26,7 @@ const TemplateColumn: FC = () => {
                 title={'Шаблоны'}
                 items={data}
                 isColumnDragDisabled={true}
-                typeDraggableItemList = {'TEMPLATE'}
+                // typeDraggableItemList = {'TEMPLATE'}
             />
         </div>
     )

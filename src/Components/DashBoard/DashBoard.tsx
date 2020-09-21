@@ -4,7 +4,7 @@ import {WidgetMap, Dashboard} from "../types";
 import {reorder, reorderQuoteMap, reorderQuoteMap2} from "../helpersDnD";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
 import {useDispatch, useSelector} from "react-redux";
-import {changeWidgetItem, setOrdered} from "../../Store/actions";
+import {addNewWidget, changeWidgetItem, setOrdered} from "../../Store/actions";
 import AddWidget from "../AddWidget/AddWidget";
 import './DashBoards.css';
 import TemplateColumn from "../TemplateColumn/TemplateColumn";
@@ -31,7 +31,7 @@ const DashBoard: FC<Props> = ({id}) => {
     })
 
     const onDragEnd = (result: any) => {
-        // console.log('result', result)
+        console.log('result', result)
 
         // dropped nowhere
         if (!result.destination) return;
@@ -56,14 +56,11 @@ const DashBoard: FC<Props> = ({id}) => {
             return;
         }
 
-        if (result.type === 'TEMPLATE') {
+        if (result.source.droppableId === 'Шаблоны') {
             console.log('TEMPLATE DRAG')
-            const data = reorderQuoteMap2({
-                quoteMap: dashboard,
-                source,
-                destination,
-            })
-            dispatch(changeWidgetItem(id, data.quoteMap));
+            // dispatch(changeWidgetItem(id, data.quoteMap));
+            // dispatch((nameAction(id, typeNewWidget: result.draggableId, destination: result.droppableId)))
+            dispatch(addNewWidget(id, 'nameNewWidget'))
             return;
         }
 
@@ -112,7 +109,7 @@ const DashBoard: FC<Props> = ({id}) => {
                             {...provided.droppableProps}
                         >
 
-                            {/*<TemplateColumn/>*/}
+                            <TemplateColumn/>
 
                             {/*проходимся столько раз, сколько ключей в поступившем объекте:*/}
                             {ordered.map((key: string, index: number) => (
