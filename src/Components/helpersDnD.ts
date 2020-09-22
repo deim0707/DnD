@@ -56,3 +56,96 @@ export const reorderQuoteMap = ({
         quoteMap: result,
     };
 };
+
+export const findObjectKeyByNameWidget = (obj: WidgetMap, name: string): string => {
+    let key = '';
+    for (let key in obj) {
+        if (obj[key].name === name) key = key.toString();
+    }
+    return key;
+}
+
+// export const getCurrentItem = (type: string, id: string, content: any) => {
+//     switch (type) {
+//         case 'Widget1':
+//             return {
+//                 id: id,
+//                 type: type,
+//                 content: {
+//                     title: content.title,
+//                     value: content.value,
+//                     type: content.type,
+//                     time: content.time,
+//                     typeData: content.typeData,
+//                 }
+//             };
+//
+//         case 'Widget2':
+//             return {
+//                 id: id,
+//                 type: type,
+//                 content: {
+//                     title: content.title,
+//                     value: content.value,
+//                     time: content.time,
+//                 }
+//             };
+//
+//         case 'Widget3':
+//             return {
+//                 id: id,
+//                 type: type,
+//                 content: {
+//                     title: content.title,
+//                     value: content.value,
+//                     type: content.type,
+//                 }
+//             };
+//
+//         default:
+//             return null;
+//     }
+// }
+
+//моканный вариант
+export const getCurrentItem = (type: string, id: string, content: any) => {
+    switch (type) {
+        case 'Widget1':
+            return {
+                id: id,
+                type: type,
+                content: {
+                    title: 'Добавили',
+                    value: '11.11',
+                    type: 'asteroid',
+                    time: Date.now(),
+                    typeData: 'nNew',
+                }
+            };
+
+        case 'Widget2':
+            return {
+                id: id,
+                type: type,
+                content: {
+                    title: 'Добавили',
+                    value: true,
+                    time: '22 сентября 18:30'
+                }
+            };
+
+        case 'Widget3':
+            return {
+                id: id,
+                type: type,
+                content: {
+                    title: 'Добавили',
+                    value: 35,
+                    type: 'celsia'
+                }
+            };
+
+        default:
+            return null;
+    }
+}

@@ -1,42 +1,9 @@
-import {ArrayOfDashBoars, Dashboard, WidgetMap} from "../Components/types";
+import {ArrayOfDashBoars, Dashboard} from "../Components/types";
 import {actions} from "./actions";
 import {arrayOfDashBoars} from './initialState';
+import uniqid from "uniqid";
+import {getCurrentItem, findObjectKeyByNameWidget} from "../Components/helpersDnD";
 
-
-const getCurrentItem = (type: string, id: string, content: any) => {
-    switch (type) {
-        case 'Widget1':
-            return {
-                id: id,
-                type: type,
-                content: {
-                    title: content.title,
-                    value: content.value,
-                    type: content.type,
-                    time: content.time,
-                    typeData: content.typeData,
-                }
-            };
-
-        case 'Widget2':
-            return {};
-
-        case 'Widget3':
-            return {};
-
-        default:
-            return null;
-    }
-}
-
-const findObjectKeyByNameWidget = (obj: WidgetMap, name: string): string => {
-    let key = '';
-    for (let i in obj) {
-        if (obj[i].name === name) key = i.toString();
-    }
-    console.log('key in func',key)
-    return key;
-}
 
 //добавить тип экшена
 const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: any): ArrayOfDashBoars => {
@@ -45,12 +12,13 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
         case actions.ADD_NEW_WIDGET_LIST: {
             return state.map((item) => {
                 if (item.idDashBoard === action.id) {
+                    const id: string = uniqid()
                     return {
                         ...item,
-                        orderedWidgetList: [...item.orderedWidgetList, '13212dasasdasd'], //<= тут будет вставляться айди из сервера
+                        orderedWidgetList: [...item.orderedWidgetList, id], //<= тут будет вставляться айди из сервера
                         dataWidget: {
                             ...item.dataWidget,
-                            '13212dasasdasd': { //<= тут будет вставляться айди из сервера
+                            [id]: { //<= тут будет вставляться айди из сервера
                                 name: action.payload,
                                 widgets: [],
                             }
@@ -77,8 +45,8 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
         }
 
         case actions.ADD_NEW_WIDGET: {
-            //тут надо решить, откуда берутся данные для нового виджета
-            let el = getCurrentItem('Widget1', '3refwsg', {
+            //тут надо решить, откуда берутся данные для нового виджета //+айди с сервера
+            let el = getCurrentItem(action.payload.typeWidget, uniqid(), {
                 title: 'Добавленный В',
                 value: '11.11',
                 type: 'asteroid',
@@ -89,7 +57,7 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
             // @ts-ignore
             return state.map((item) => {
                 if (item.idDashBoard === action.id) {
-                    let key: string = findObjectKeyByNameWidget(item.dataWidget, action.payload.destination);
+                    const key: string = findObjectKeyByNameWidget(item.dataWidget, action.payload.destination);
 
                     return {
                         ...item, dataWidget: {
@@ -98,8 +66,7 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
                             }
                         }
                     }
-                }
-                else return item;
+                } else return item;
             })
         }
 

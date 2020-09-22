@@ -7,7 +7,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {changeWidgetsOrder, changeWidgetListOrder, addNewWidgetToWidgetList} from "../../Store/actions";
 import AddWidget from "../AddWidget/AddWidget";
 import TemplateColumn from "../TemplateColumn/TemplateColumn";
-import uniqid from "uniqid";
 import './DashBoards.css';
 
 
@@ -29,6 +28,8 @@ const DashBoard: FC<Props> = ({id}) => {
 
 
     const onDragEnd = (result: any) => {
+        console.log(result)
+
         if (!result.destination) return;
 
         const source = result.source;
@@ -50,8 +51,6 @@ const DashBoard: FC<Props> = ({id}) => {
         }
 
         if (result.source.droppableId === 'Шаблоны') {
-            console.log('TEMPLATE DRAG')
-            console.log(result)
             dispatch(addNewWidgetToWidgetList('hjg123jhg123', result.draggableId, result.destination.droppableId, result.destination.index))
             return;
         }
@@ -68,7 +67,7 @@ const DashBoard: FC<Props> = ({id}) => {
                     currentDestination.droppableId = item;
                 }
             }
-            let returnObj = {
+            const returnObj = {
                 quoteMap: dashboard,
                 source: currentSource,
                 destination: currentDestination,
@@ -76,7 +75,6 @@ const DashBoard: FC<Props> = ({id}) => {
             console.log('returnObj',returnObj)
             return returnObj;
         }
-
 
         const data = reorderQuoteMap(findIndex());
 
