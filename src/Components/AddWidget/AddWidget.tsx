@@ -1,6 +1,6 @@
 import React, {FC, useState} from "react";
 import {useDispatch} from "react-redux";
-import {addNewWidget} from "../../Store/actions";
+import {addNewWidgetList} from "../../Store/actions";
 import './AddWidget.css';
 
 interface Props {
@@ -15,7 +15,7 @@ const AddWidget: FC<Props> = ({changeVisibility, id}) => {
     const dispatch = useDispatch();
 
     const addWidget = () => {
-        dispatch(addNewWidget(id, nameNewWidget))
+        dispatch(addNewWidgetList(id, nameNewWidget))
         changeVisibility(false)
         setNameNewWidget('')
     }

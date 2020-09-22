@@ -1,21 +1,21 @@
 import {WidgetMap} from "../Components/types";
 
 export enum actions {
-    CHANGE_WIDGET_ITEM = 'CHANGE_WIDGET_ITEM',
+    CHANGE_WIDGETS_ORDER = 'CHANGE_WIDGETS_ORDER',
     CHANGE_WIDGET_LIST_ORDER = 'CHANGE_WIDGET_LIST_ORDER',
-    ADD_NEW_WIDGET = 'ADD_NEW_WIDGET',
-    ADD_NEW_MINIWIDGET = 'ADD_NEW_MINIWIDGET'
+    ADD_NEW_WIDGET_LIST = 'ADD_NEW_WIDGET_LIST',
+    ADD_NEW_WIDGET = 'ADD_NEW_WIDGET'
 }
 
-export const changeWidgetItem = (id: string, payload: WidgetMap) => (
+export const changeWidgetsOrder = (id: string, payload: WidgetMap) => (
     {
-        type: actions.CHANGE_WIDGET_ITEM,
+        type: actions.CHANGE_WIDGETS_ORDER,
         id,
         payload,
     }
 )
 
-export const setOrdered = (id: string, payload: string[]) => (
+export const changeWidgetListOrder = (id: string, payload: string[]) => (
     {
         type: actions.CHANGE_WIDGET_LIST_ORDER,
         id,
@@ -24,23 +24,23 @@ export const setOrdered = (id: string, payload: string[]) => (
 )
 
 
-export const addNewWidget = (id: string, payload: string) => (
+export const addNewWidgetList = (id: string, payload: string) => (
     {
-        type: actions.ADD_NEW_WIDGET,
+        type: actions.ADD_NEW_WIDGET_LIST,
         id,
         payload,
     }
 )
 
-export const addNewMiniWidget = (id: string, typeMiniWidget: string, destination: string) => (
-    {
-        type: actions.ADD_NEW_MINIWIDGET,
-        id,
-        payload: {
-            typeMiniWidget, destination
-        }
-    }
-)
+// export const addNewMiniWidget = (id: string, typeMiniWidget: string, destination: string) => (
+//     {
+//         type: actions.ADD_NEW_WIDGET,
+//         id,
+//         payload: {
+//             typeMiniWidget, destination
+//         }
+//     }
+// )
 
 
 // export type Actions = ChangeWidgetItem
