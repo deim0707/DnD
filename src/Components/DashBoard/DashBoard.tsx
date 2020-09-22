@@ -32,19 +32,16 @@ const DashBoard: FC<Props> = ({id}) => {
 
     const onDragEnd = (result: any) => {
         console.log('result', result)
-
         // dropped nowhere
         if (!result.destination) return;
 
         const source = result.source;
         const destination = result.destination;
-
         // did not move anywhere - can bail early
         if (
             source.droppableId === destination.droppableId &&
             source.index === destination.index
         ) return;
-
         // reordering column
         if (result.type === 'COLUMN') {
             const newOrdered: string[] = reorder(
@@ -63,6 +60,7 @@ const DashBoard: FC<Props> = ({id}) => {
             dispatch(addNewWidget(id, 'nameNewWidget'))
             return;
         }
+
         const findIndex = () => {
             const currentSource = {index: result.source.index, droppableId: '',};
             const currentDestination = {index: result.destination.index, droppableId: '',};
@@ -80,7 +78,7 @@ const DashBoard: FC<Props> = ({id}) => {
                 source: currentSource,
                 destination: currentDestination,
             }
-            // console.log('returnObj',returnObj)
+            console.log('returnObj',returnObj)
             return returnObj;
         }
 
@@ -94,8 +92,6 @@ const DashBoard: FC<Props> = ({id}) => {
         //data.quoteMap - это переставленный виджетЛист
         dispatch(changeWidgetItem(id, data.quoteMap));
         //тут вызовем отправку изменений на сервер //или в колонках
-
-
     };
 
     return (
@@ -130,7 +126,7 @@ const DashBoard: FC<Props> = ({id}) => {
                             {...provided.droppableProps}
                         >
 
-                            <TemplateColumn/>
+                            {/*<TemplateColumn/>*/}
 
                             {/*проходимся столько раз, сколько ключей в поступившем объекте:*/}
                             {ordered.map((key: string, index: number) => (

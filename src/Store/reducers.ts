@@ -6,12 +6,16 @@ import {arrayOfDashBoars} from './initialState';
 const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: any): ArrayOfDashBoars => {
     switch (action.type) {
         case actions.CHANGE_WIDGET_ITEM: {
+            console.log('action.payload',action.payload)
             return state.map((item: Dashboard) => {
                 if (item.idDashBoard === action.id) {
+                    // return {
+                    //     ...item, dataWidget: { //:action.payload
+                    //         ...item.dataWidget, widgets: action.payload
+                    //     }
+                    // }
                     return {
-                        ...item, dataWidget: {
-                            ...item.dataWidget, widgets: action.payload
-                        }
+                        ...item, dataWidget: action.payload
                     }
                 } else return item;
             })

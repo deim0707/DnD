@@ -18,11 +18,12 @@ export const reorderQuoteMap = ({
                                     destination,
                                 }: any) => {
     // const current: Widget[] = [...quoteMap[source.droppableId]];
+    console.log(`______________________________`)
     // console.log('quoteMap',quoteMap)
     const current: Widget[] = quoteMap[source.droppableId].widgets;
-    // console.log('current', current)
+    console.log('current', current)
     const next: Widget[] = quoteMap[destination.droppableId].widgets;
-    // console.log('next', next)
+    console.log('next', next)
     const target: Widget = current[source.index];
     // console.log('target', target)
 
@@ -32,9 +33,17 @@ export const reorderQuoteMap = ({
             source.index,
             destination.index,
         );
+        console.log('quoteMap[source.droppableId', quoteMap[source.droppableId])
+        console.log('reordered', reordered)
+        // const result: WidgetMap = {
+        //     ...quoteMap,
+        //     [source.droppableId]: reordered,
+        // };
         const result: WidgetMap = {
             ...quoteMap,
-            [source.droppableId]: reordered,
+            [source.droppableId]: {
+                ...quoteMap[source.droppableId], widgets: reordered
+            },
         };
         return {
             quoteMap: result,
@@ -43,22 +52,25 @@ export const reorderQuoteMap = ({
 
     current.splice(source.index, 1);
     next.splice(destination.index, 0, target);
+    // const result: WidgetMap = {
+    //     ...quoteMap,
+    //     [source.droppableId]: current,
+    //     [destination.droppableId]: next,
+    // };
+    console.log('[source.droppableId]', quoteMap[source.droppableId])
+    console.log(' [destination.droppableId]', quoteMap[destination.droppableId])
+
     const result: WidgetMap = {
         ...quoteMap,
-        [source.droppableId]: current,
-        [destination.droppableId]: next,
+        [source.droppableId]: {
+            ...quoteMap[source.droppableId], widgets: current
+        },
+        [destination.droppableId]: {
+            ...quoteMap[destination.droppableId], widgets: next
+        }
     };
 
     return {
         quoteMap: result,
     };
-};
-
-
-export const reorder2 = (list: any[], startIndex: number, endIndex: number): any[] => {
-    const result = Array.from(list);
-    const removed = result[startIndex];
-    result.splice(endIndex, 0, removed);
-
-    return result;
 };
