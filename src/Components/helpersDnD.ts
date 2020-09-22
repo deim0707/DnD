@@ -59,8 +59,8 @@ export const reorderQuoteMap = ({
 
 export const findObjectKeyByNameWidget = (obj: WidgetMap, name: string): string => {
     let key = '';
-    for (let key in obj) {
-        if (obj[key].name === name) key = key.toString();
+    for (let i in obj) {
+        if (obj[i].name === name) key = i.toString();
     }
     return key;
 }
