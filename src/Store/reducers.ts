@@ -3,12 +3,12 @@ import {actions} from "./actions";
 import {arrayOfDashBoars} from './initialState';
 
 
-const getCurrentItem = (type1: string, type2: string, id: string, content: any) => {
-    switch (type1) {
+const getCurrentItem = (type: string, id: string, content: any) => {
+    switch (type) {
         case 'Widget1':
             return {
                 id: id,
-                type: type2,
+                type: type,
                 content: {
                     title: content.title,
                     value: content.value,
@@ -34,6 +34,7 @@ const findObjectKeyByNameWidget = (obj: WidgetMap, name: string): string => {
     for (let i in obj) {
         if (obj[i].name === name) key = i.toString();
     }
+    console.log('key in func',key)
     return key;
 }
 
@@ -75,8 +76,9 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
             })
         }
 
-        case action.ADD_NEW_WIDGET: {
-            let el = getCurrentItem('Widget1', 'Widget1', '3refwsg', {
+        case actions.ADD_NEW_WIDGET: {
+            //тут надо решить, откуда берутся данные для нового виджета
+            let el = getCurrentItem('Widget1', '3refwsg', {
                 title: 'Добавленный В',
                 value: '11.11',
                 type: 'asteroid',
@@ -84,35 +86,20 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
                 typeData: 'nNew',
             });
 
-
             // @ts-ignore
             return state.map((item) => {
                 if (item.idDashBoard === action.id) {
-
-                    let key: string = findObjectKeyByNameWidget(item.dataWidget, 'Dat4ikkddddd');
+                    let key: string = findObjectKeyByNameWidget(item.dataWidget, action.payload.destination);
 
                     return {
-                        ...item,
-                        dataWidget: {
-                            ...item.dataWidget,
-                            //получить правильный ключ. сейчас тут поле нейм
-                            // [action.payload.destination]: {
-                            //     ...item.dataWidget[action.payload.destination],
-                            //     widgets: [
-                            //         ...item.dataWidget[action.payload.destination].widgets,
-                            //         el
-                            //     ]
-                            // }в общем
-                            [key]: {
-                                ...item.dataWidget[key],
-                                widgets: [
-                                    ...item.dataWidget[key].widgets,
-                                    el
-                                ]
+                        ...item, dataWidget: {
+                            ...item.dataWidget, [key]: {
+                                ...item.dataWidget[key], widgets: [...item.dataWidget[key].widgets, el]
                             }
                         }
                     }
-                } else return item;
+                }
+                else return item;
             })
         }
 

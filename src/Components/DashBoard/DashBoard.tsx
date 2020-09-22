@@ -4,10 +4,11 @@ import {WidgetMap, Dashboard} from "../types";
 import {reorder, reorderQuoteMap} from "../helpersDnD";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
 import {useDispatch, useSelector} from "react-redux";
-import {addNewWidgetList, changeWidgetsOrder, changeWidgetListOrder, addNewWidgetToWidgetList} from "../../Store/actions";
+import {changeWidgetsOrder, changeWidgetListOrder, addNewWidgetToWidgetList} from "../../Store/actions";
 import AddWidget from "../AddWidget/AddWidget";
-import './DashBoards.css';
 import TemplateColumn from "../TemplateColumn/TemplateColumn";
+import uniqid from "uniqid";
+import './DashBoards.css';
 
 
 interface Props {
@@ -51,10 +52,7 @@ const DashBoard: FC<Props> = ({id}) => {
         if (result.source.droppableId === 'Шаблоны') {
             console.log('TEMPLATE DRAG')
             console.log(result)
-            // dispatch(changeWidgetItem(id, data.quoteMap));
-            // dispatch((nameAction(id, typeNewWidget: result.draggableId, destination: result.droppableId)))
-            // dispatch(addNewWidgetList(id, 'nameNewWidget'))
-            dispatch(addNewWidgetToWidgetList(id, 'Widget1', result.destination.droppableId, result.destination.index))
+            dispatch(addNewWidgetToWidgetList('hjg123jhg123', result.draggableId, result.destination.droppableId, result.destination.index))
             return;
         }
 
