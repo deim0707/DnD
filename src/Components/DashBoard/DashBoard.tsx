@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from "react";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 import {WidgetMap, Dashboard, Widget} from "../types";
-import {reorder, reorderQuoteMap, reorderQuoteMap2} from "../helpersDnD";
+import {reorder, reorderQuoteMap} from "../helpersDnD";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
 import {useDispatch, useSelector} from "react-redux";
 import {addNewWidget, changeWidgetItem, setOrdered} from "../../Store/actions";
@@ -80,7 +80,7 @@ const DashBoard: FC<Props> = ({id}) => {
                 source: currentSource,
                 destination: currentDestination,
             }
-            console.log('returnObj',returnObj)
+            // console.log('returnObj',returnObj)
             return returnObj;
         }
 
