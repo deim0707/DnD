@@ -32,15 +32,17 @@ export const addNewWidgetList = (id: string, payload: string) => (
     }
 )
 
-// export const addNewMiniWidget = (id: string, typeMiniWidget: string, destination: string) => (
-//     {
-//         type: actions.ADD_NEW_WIDGET,
-//         id,
-//         payload: {
-//             typeMiniWidget, destination
-//         }
-//     }
-// )
+export const addNewWidgetToWidgetList = (id: string, typeWidget: string, destination: string, index: number) => (
+    {
+        type: actions.ADD_NEW_WIDGET,
+        id,
+        payload: {
+            typeWidget,
+            destination,
+            index,
+        }
+    }
+)
 
 
 // export type Actions = ChangeWidgetItem

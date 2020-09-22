@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {Draggable} from "react-beautiful-dnd";
-import {Content, Widget, } from "../types";
+import {Content} from "../types";
 import './DraggableItem.css'
 import Widget1 from "../Widgets/Widget1/Widget1";
 import Widget2 from "../Widgets/Widget2/Widget2";
@@ -18,7 +18,8 @@ const DraggableItem: FC<Props> = ({item, id, idx, type}) => {
     const getCurrentItem = () => {
         switch (type) {
             case 'Widget1':
-                return <Widget1 title={item.title} time={item.time} type={item.type} value={item.value} typeData={item.typeData}/>
+                return <Widget1 title={item.title} time={item.time} type={item.type} value={item.value}
+                                typeData={item.typeData}/>
 
             case 'Widget2':
                 return <Widget2 title={item.title} time={item.time} value={item.value}/>
@@ -26,7 +27,8 @@ const DraggableItem: FC<Props> = ({item, id, idx, type}) => {
             case 'Widget3':
                 return <Widget3 title={item.title} type={item.type} value={item.value}/>
 
-            default: return null;
+            default:
+                return null;
         }
     }
 
