@@ -25,6 +25,8 @@ const DashBoard: FC<Props> = ({id}) => {
     const dashboard: WidgetMap = dashboardAllInfo.dataWidget;
     const ordered: string[] = dashboardAllInfo.orderedWidgetList
 
+
+
     const onDragEnd = (result: any) => {
         if (!result.destination) return;
 
@@ -114,7 +116,7 @@ const DashBoard: FC<Props> = ({id}) => {
                             {...provided.droppableProps}
                         >
 
-                            {/*<TemplateColumn/>*/}
+                            <TemplateColumn/>
 
                             {/*проходимся столько раз, сколько ключей в поступившем объекте:*/}
                             {ordered.map((key: string, index: number) => (

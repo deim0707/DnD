@@ -28,10 +28,13 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
                 if (item.idDashBoard === action.id) {
                     return {
                         ...item,
-                        orderedWidgetList: [...item.orderedWidgetList, action.payload],
+                        orderedWidgetList: [...item.orderedWidgetList, '13212dasasdasd'], //<= тут будет вставляться айди из сервера
                         dataWidget: {
                             ...item.dataWidget,
-                            [action.payload]: []
+                            '13212dasasdasd': { //<= тут будет вставляться айди из сервера
+                                name: action.payload,
+                                widgets: [],
+                            }
                         }
                     }
                 } else return item;
