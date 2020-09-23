@@ -26,11 +26,10 @@ const DashBoard: FC<Props> = ({id}) => {
     const ordered: string[] = dashboardAllInfo.orderedWidgetList
 
 
-
     const onDragEnd = (result: any) => {
         console.log(result)
 
-        if (!result.destination) return;
+        if (!result.destination || result.destination.droppableId === 'Шаблоны') return;
 
         const source = result.source;
         const destination = result.destination;
@@ -72,7 +71,7 @@ const DashBoard: FC<Props> = ({id}) => {
                 source: currentSource,
                 destination: currentDestination,
             }
-            console.log('returnObj',returnObj)
+            console.log('returnObj', returnObj)
             return returnObj;
         }
 
@@ -113,18 +112,18 @@ const DashBoard: FC<Props> = ({id}) => {
                             ref={provided.innerRef}
                             {...provided.droppableProps}
                         >
-
                             <TemplateColumn/>
-
                             {/*проходимся столько раз, сколько ключей в поступившем объекте:*/}
-                            {ordered.map((key: string, index: number) => (
-                                <DraggableColumn
-                                    key={key}
-                                    index={index}
-                                    title={dashboard[key].name} /*<= заголовок из ключа объекта*/
-                                    items={dashboard[key].widgets} /*<= здесь конкретный объект*/
-                                />
-                            ))}
+                            <div className="exp" style={{display: 'flex'}}>
+                                {ordered.map((key: string, index: number) => (
+                                    <DraggableColumn
+                                        key={key}
+                                        index={index}
+                                        title={dashboard[key].name} /*<= заголовок из ключа объекта*/
+                                        items={dashboard[key].widgets} /*<= здесь конкретный объект*/
+                                    />
+                                ))}
+                            </div>
                             {provided.placeholder}
                         </div>
                     )}

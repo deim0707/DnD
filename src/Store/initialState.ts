@@ -2,7 +2,7 @@ import {WidgetMap, Dashboard, ArrayOfDashBoars} from "../Components/types";
 
 const dataWidget: WidgetMap = {
     'aaa123123123123': {
-        name: 'Dat4ikkddddd',
+        name: 'Датчик1',
         widgets: [
             {
                 id: '234234',
@@ -25,7 +25,7 @@ const dataWidget: WidgetMap = {
         ],
     },
     'b123123ddsad': {
-        name: 'Крутойqqqq датчик',
+        name: 'Датчик2',
         widgets: [
             {
                 id: '234s2s234',

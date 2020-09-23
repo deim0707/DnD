@@ -7,10 +7,9 @@ import './DraggableItemList.css'
 interface Props {
     listId: string,
     items: Widget[],
-    listType: string
+    listType?: string
 }
 
-//QuoteList
 const DraggableItemList: FC<Props> = ({listId, items, listType}) => {
     return (
         <Droppable

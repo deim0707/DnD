@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
 
-//тут важно, чтобы айди совпадал с типом виджеты
+//тут важно, чтобы айди совпадал с типом виджета
 const data = [
     {
         id: 'Widget1',
@@ -43,7 +43,7 @@ const TemplateColumn: FC = () => {
                 title={'Шаблоны'}
                 items={data}
                 isColumnDragDisabled={true}
-                // typeDraggableItemList = {'TEMPLATE'}
+                disableInteractiveElementBlocking={false}
             />
         </div>
     )

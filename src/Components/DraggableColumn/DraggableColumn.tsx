@@ -9,6 +9,7 @@ interface Props {
     title: string,
     items: Widget[],
     isColumnDragDisabled?: boolean,
+    disableInteractiveElementBlocking?: boolean,
     typeDraggableItemList?: string
 }
 
@@ -17,10 +18,11 @@ const DraggableColumn: FC<Props> = ({
                                         title,
                                         items,
                                         isColumnDragDisabled = false,
-                                        typeDraggableItemList=''
+                                        typeDraggableItemList = '',
+                                        disableInteractiveElementBlocking= false,
                                     }) => {
     return (
-        <Draggable draggableId={title} index={index} isDragDisabled={isColumnDragDisabled}>
+        <Draggable draggableId={title} index={index} isDragDisabled={isColumnDragDisabled} disableInteractiveElementBlocking={disableInteractiveElementBlocking}>
             {(provided, snapshot) => (
                 <div
                     className='containerDraggableColumn'
