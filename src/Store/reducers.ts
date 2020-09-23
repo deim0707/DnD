@@ -5,13 +5,17 @@ import uniqid from "uniqid";
 import {getCurrentItem, findObjectKeyByNameWidget} from "../Components/helpersDnD";
 
 
+const isSameWidget = (item: Dashboard, action: Record<string, unknown>): boolean => {
+    return item.idDashBoard === action.id
+}
+
 //добавить тип экшена
 const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: any): ArrayOfDashBoars => {
     switch (action.type) {
 
         case actions.ADD_NEW_WIDGET_LIST: {
             return state.map((item) => {
-                if (item.idDashBoard === action.id) {
+                if (isSameWidget(item, action)) {
                     const id: string = uniqid()
                     return {
                         ...item,
@@ -54,22 +58,23 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
                 typeData: 'nNew',
             });
 
-            // @ts-ignore
             return state.map((item) => {
-                if (item.idDashBoard === action.id) {
+                if (item.idDashBoard === action.id && el) {
                     const key: string = findObjectKeyByNameWidget(item.dataWidget, action.payload.destination);
+
+                    let newWidgets = [...item.dataWidget[key].widgets]
+                    newWidgets.splice(action.payload.index, 0, el)
 
                     return {
                         ...item, dataWidget: {
                             ...item.dataWidget, [key]: {
-                                ...item.dataWidget[key], widgets: [...item.dataWidget[key].widgets, el]
+                                ...item.dataWidget[key], widgets: newWidgets
                             }
                         }
                     }
                 } else return item;
             })
         }
-
 
         default:
             return state;

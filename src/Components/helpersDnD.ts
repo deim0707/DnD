@@ -108,7 +108,7 @@ export const findObjectKeyByNameWidget = (obj: WidgetMap, name: string): string 
 // }
 
 //моканный вариант
-export const getCurrentItem = (type: string, id: string, content: any) => {
+export const getCurrentItem = (type: string, id: string, content: any): Widget | null => {
     switch (type) {
         case 'Widget1':
             return {
