@@ -9,8 +9,6 @@ interface Props {
     title: string,
     items: Widget[],
     isColumnDragDisabled?: boolean,
-    disableInteractiveElementBlocking?: boolean,
-    typeDraggableItemList?: string
 }
 
 const DraggableColumn: FC<Props> = ({
@@ -18,31 +16,35 @@ const DraggableColumn: FC<Props> = ({
                                         title,
                                         items,
                                         isColumnDragDisabled = false,
-                                        typeDraggableItemList = '',
-                                        disableInteractiveElementBlocking= false,
                                     }) => {
     return (
-        <Draggable draggableId={title} index={index} isDragDisabled={isColumnDragDisabled} disableInteractiveElementBlocking={disableInteractiveElementBlocking}>
-            {(provided, snapshot) => (
-                <div
-                    className='containerDraggableColumn'
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                >
-                    <div className='headerDraggableColumn'
+        <Draggable
+            draggableId={title}
+            index={index}
+            isDragDisabled={isColumnDragDisabled}
+        >
+            {(provided) => {
+                const props = isColumnDragDisabled ? null : {...provided.draggableProps}
+                return (
+                    <div
+                        className='containerDraggableColumn'
+                        ref={provided.innerRef}
+                        {...props}
                     >
-                        <h4 className='titleDraggableColumn'
-                            {...provided.dragHandleProps}
-                            aria-label={`${title} quote list`}
-                        > {title} </h4>
+                        <div className='headerDraggableColumn'
+                        >
+                            <h4 className='titleDraggableColumn'
+                                {...provided.dragHandleProps}
+                                aria-label={`${title} quote list`}
+                            > {title} </h4>
+                        </div>
+                        <DraggableItemList
+                            listId={title}
+                            items={items}
+                        />
                     </div>
-                    <DraggableItemList
-                        listId={title}
-                        listType={typeDraggableItemList}
-                        items={items}
-                    />
-                </div>
-            )}
+                )
+            }}
         </Draggable>
     )
 }

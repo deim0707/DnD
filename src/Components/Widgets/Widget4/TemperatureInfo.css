@@ -1,0 +1,32 @@
+.TemperatureInfoWrapper {
+    width: 190px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.TemperatureInfoWrapper .ico img {
+    width: 24px;
+    height: 24px;
+}
+
+.TemperatureInfoWrapper .value {
+    font-size: 56px;
+}
+
+.TemperatureInfoWrapper .valueAdditional {
+    height: 48px;
+    font-size: 16px;
+}
+
+.TemperatureInfoWrapper .value, .TemperatureInfoWrapper .valueAdditional, .TemperatureInfoWrapper .time {
+    color: white;
+}
+
+.TemperatureInfoWrapper .time {
+    margin-bottom: 20px;
+}

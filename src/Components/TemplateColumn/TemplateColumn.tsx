@@ -43,7 +43,6 @@ const TemplateColumn: FC = () => {
                 title={'Шаблоны'}
                 items={data}
                 isColumnDragDisabled={true}
-                disableInteractiveElementBlocking={false}
             />
         </div>
     )
