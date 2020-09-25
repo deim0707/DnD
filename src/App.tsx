@@ -1,15 +1,17 @@
 import React from 'react';
 import DashBoard from "./Components/DashBoard/DashBoard";
+
 import Info1_ElWidget from "./Components/Widgets/Info1_ElWidget/Info1_ElWidget";
-
-import thermometerSvg from './Img/thermometer.svg'
 import ChangeValue_ElWidget from "./Components/Widgets/ChangeValue_ElWidget/ChangeValue_ElWidget";
+import ModeControl_ElWidget from "./Components/Widgets/ModeControl_ElWidget/ModeControl_ElWidget";
+import FanPower from "./Components/Widgets/FanPower/FanPower";
 
+const thermometerSvg = require('./Img/thermometer.svg')
 
 function App() {
     return (
         <div className="App">
-            {/*<DashBoard id={'hjg123jhg123'}/>*/}
+            <DashBoard id={'hjg123jhg123'}/>
             <div
                 style={
                     {
@@ -19,12 +21,13 @@ function App() {
                         borderRadius: '5px',
                         display: 'flex',
                         flexDirection: "column",
-                        justifyContent: 'start',
+                        justifyContent: 'space-around',
                         alignItems: 'center',
                         padding: '10px',
                     }
                 }
             >
+
                 <Info1_ElWidget
                     svgFile={thermometerSvg}
                     value={16.5}
@@ -33,6 +36,11 @@ function App() {
                 />
 
                 <ChangeValue_ElWidget value={16} typeValue={'℃'} min={12} max={20}/>
+
+                <ModeControl_ElWidget isSnowflakeOn={true} isFanOn={false} isHeatingOn={true} isAutoOn={false}/>
+
+                <FanPower/>
+
             </div>
         </div>
     );

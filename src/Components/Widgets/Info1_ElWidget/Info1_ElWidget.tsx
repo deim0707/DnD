@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, ReactText} from "react";
 import './Info1_ElWidget.css';
 
 interface Props {
@@ -19,7 +19,7 @@ const Info1_ElWidget: FC<Props> = ({svgFile, value, typeValue, time}) => {
 
     const currentTime: Date = new Date(time);
     const hours: number = currentTime.getHours();
-    const minutes: number = currentTime.getMinutes();
+    const minutes: ReactText = currentTime.getMinutes() < 10 ? `0${currentTime.getMinutes()}` : currentTime.getMinutes();
 
     return (
         <div className='TemperatureInfoWrapper'>

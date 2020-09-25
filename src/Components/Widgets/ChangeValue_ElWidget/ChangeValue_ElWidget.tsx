@@ -17,12 +17,11 @@ const ChangeValue_ElWidget: FC<Props> = ({value, typeValue, min, max}) => {
 
     const isCurrentValueMinimal: boolean = min ? Boolean(min && currentValue <= min) : false;
 
-    const styleButton = (isNormalValue: boolean): Object => {
-        const style = {
-            cursor: 'not-allowed',
-        }
-        return !isNormalValue ? {} : style;
+    const style = {
+        cursor: 'not-allowed',
     }
+
+    const getStyleButton = (isNormalValue: boolean): Object => !isNormalValue ? {} : style;
 
     const incr = (): void => {
         if (isCurrentValueMaximum) return;
@@ -37,7 +36,7 @@ const ChangeValue_ElWidget: FC<Props> = ({value, typeValue, min, max}) => {
     return (
         <div className='ChangeValue'>
             <button
-                style={styleButton(isCurrentValueMinimal)}
+                style={getStyleButton(isCurrentValueMinimal)}
                 disabled={isCurrentValueMinimal}
                 onClick={decr}
             >
@@ -48,7 +47,7 @@ const ChangeValue_ElWidget: FC<Props> = ({value, typeValue, min, max}) => {
                 <span className="type">{typeValue}</span>
             </div>
             <button
-                style={styleButton(isCurrentValueMaximum)}
+                style={getStyleButton(isCurrentValueMaximum)}
                 disabled={isCurrentValueMaximum}
                 onClick={incr}
             >
