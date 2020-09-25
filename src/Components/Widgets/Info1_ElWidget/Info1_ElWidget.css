@@ -5,8 +5,7 @@
     align-items: center;
     justify-content: space-around;
 
-    border: 1px solid black;
-    border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .TemperatureInfoWrapper .ico img {
@@ -21,9 +20,14 @@
 .TemperatureInfoWrapper .valueAdditional {
     height: 48px;
     font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.TemperatureInfoWrapper .value, .TemperatureInfoWrapper .valueAdditional, .TemperatureInfoWrapper .time {
+.TemperatureInfoWrapper .value,
+.TemperatureInfoWrapper .valueAdditional,
+.TemperatureInfoWrapper .time {
     color: white;
 }
 

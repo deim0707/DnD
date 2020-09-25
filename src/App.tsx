@@ -1,8 +1,9 @@
 import React from 'react';
 import DashBoard from "./Components/DashBoard/DashBoard";
-import TemperatureInfo from "./Components/Widgets/Widget4/TemperatureInfo";
+import Info1_ElWidget from "./Components/Widgets/Info1_ElWidget/Info1_ElWidget";
 
 import thermometerSvg from './Img/thermometer.svg'
+import ChangeValue_ElWidget from "./Components/Widgets/ChangeValue_ElWidget/ChangeValue_ElWidget";
 
 
 function App() {
@@ -17,17 +18,21 @@ function App() {
                         height: '500px',
                         borderRadius: '5px',
                         display: 'flex',
-                        justifyContent: 'center',
-                        padding: '10px'
+                        flexDirection: "column",
+                        justifyContent: 'start',
+                        alignItems: 'center',
+                        padding: '10px',
                     }
                 }
             >
-                <TemperatureInfo
+                <Info1_ElWidget
                     svgFile={thermometerSvg}
                     value={16.5}
                     typeValue={'℃'}
                     time={Date.now()}
                 />
+
+                <ChangeValue_ElWidget value={16} typeValue={'℃'} min={12} max={20}/>
             </div>
         </div>
     );

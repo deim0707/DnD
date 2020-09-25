@@ -1,24 +1,25 @@
 import React, {FC} from "react";
-import './TemperatureInfo.css';
+import './Info1_ElWidget.css';
 
 interface Props {
     svgFile: any,
-    value: number
+    value: number /*здесь важно подавать параметры через точку*/
     typeValue: string,
     time: number
 }
 
 const regExp: RegExp = /(\d+)\.(\d+)/;
 
-const TemperatureInfo: FC<Props> = ({svgFile, value, typeValue, time}) => {
+
+const Info1_ElWidget: FC<Props> = ({svgFile, value, typeValue, time}) => {
 
     const valueAfterRegExp: RegExpMatchArray | null = `${value}`.match(regExp);
-    const valueMain = valueAfterRegExp !== null ? valueAfterRegExp[1] : null;
-    const valueAdditional = valueAfterRegExp !== null ? valueAfterRegExp[2] : null;
+    const valueMain: string = valueAfterRegExp !== null ? valueAfterRegExp[1] : '';
+    const valueAdditional: string = valueAfterRegExp !== null ? valueAfterRegExp[2] : '';
 
-    const currentTime = new Date(time);
-    const hours = currentTime.getHours();
-    const minutes = currentTime.getMinutes();
+    const currentTime: Date = new Date(time);
+    const hours: number = currentTime.getHours();
+    const minutes: number = currentTime.getMinutes();
 
     return (
         <div className='TemperatureInfoWrapper'>
@@ -39,4 +40,4 @@ const TemperatureInfo: FC<Props> = ({svgFile, value, typeValue, time}) => {
     )
 }
 
-export default TemperatureInfo;
+export default Info1_ElWidget;
