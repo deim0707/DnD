@@ -4,9 +4,7 @@ package-lock.json
 react-app-env.d.ts
 # dependencies
 /node_modules
-
-
-
+/build
 
 .env.local
 .env.development.local

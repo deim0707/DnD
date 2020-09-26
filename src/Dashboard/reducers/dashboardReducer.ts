@@ -1,13 +1,8 @@
+import uniqid from "uniqid";
 import {ArrayOfDashBoars, Dashboard} from "../models/dashboardTypes";
 import {actions} from "../actions/actions";
 import {arrayOfDashBoars} from '../models/initialState';
-import uniqid from "uniqid";
 import {getCurrentItem, findObjectKeyByNameWidget} from "../components/Drag&DropWrappers/helpersDnD";
-
-
-const isSameWidget = (item: Dashboard, action: Record<string, unknown>): boolean => {
-    return item.idDashBoard === action.id
-}
 
 //добавить тип экшена
 const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: any): ArrayOfDashBoars => {
@@ -15,7 +10,7 @@ const dashboardReducer = (state: ArrayOfDashBoars = arrayOfDashBoars, action: an
 
         case actions.ADD_NEW_WIDGET_LIST: {
             return state.map((item) => {
-                if (isSameWidget(item, action)) {
+                if (item.idDashBoard === action.id) {
                     const id: string = uniqid()
                     return {
                         ...item,

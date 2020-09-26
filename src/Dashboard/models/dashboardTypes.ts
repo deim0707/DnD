@@ -1,4 +1,4 @@
-import {actions} from "../actions/actions";
+// import {actions} from "../actions/actions";
 
 // export type Widget1Content = {
 //     title: string,
@@ -51,3 +51,7 @@ export type Dashboard = {
 }
 
 export type ArrayOfDashBoars = Dashboard[];
+
+export interface store {
+    dashboardReducer: ArrayOfDashBoars
+}
