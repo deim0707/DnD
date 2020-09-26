@@ -1,4 +1,4 @@
-import {ArrayOfDashBoars} from "../Components/types";
+import {ArrayOfDashBoars} from "./dashboardTypes";
 
 
 export interface store {

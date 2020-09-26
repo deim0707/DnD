@@ -1,4 +1,4 @@
-import {Widget, WidgetMap} from "./types";
+import {Widget, WidgetMap} from "../../models/dashboardTypes";
 
 export const reorder = (list: any[], startIndex: number, endIndex: number): any[] => {
     console.log('list', list)

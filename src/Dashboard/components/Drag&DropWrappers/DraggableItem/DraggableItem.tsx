@@ -1,10 +1,10 @@
 import React, {FC} from "react";
 import {Draggable} from "react-beautiful-dnd";
-import {Content} from "../types";
+import {Content} from "../../../models/dashboardTypes";
 import './DraggableItem.css'
-import Widget1 from "../Widgets/Widget1/Widget1";
-import Widget2 from "../Widgets/Widget2/Widget2";
-import Widget3 from "../Widgets/Widget3/Widget3";
+import Widget1 from "../../Widgets/Widget1/Widget1";
+import Widget2 from "../../Widgets/Widget2/Widget2";
+import Widget3 from "../../Widgets/Widget3/Widget3";
 
 interface Props {
     item: Content,

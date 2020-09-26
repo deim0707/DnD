@@ -1,4 +1,4 @@
-import {WidgetMap, Dashboard, ArrayOfDashBoars} from "../Components/types";
+import {WidgetMap, Dashboard, ArrayOfDashBoars} from "./dashboardTypes";
 
 const dataWidget: WidgetMap = {
     'aaa123123123123': {

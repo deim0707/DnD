@@ -1,4 +1,4 @@
-import {actions} from "../Store/actions";
+import {actions} from "../actions/actions";
 
 // export type Widget1Content = {
 //     title: string,

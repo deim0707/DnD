@@ -1,6 +1,6 @@
 import React, {FC} from "react";
-import asteroid from '../../../Img/asteroid.svg'
-import leaf from '../../../Img/leaf.svg';
+import asteroid from '../../../../Img/asteroid.svg'
+import leaf from '../../../../Img/leaf.svg';
 import './Widget1.css'
 
 interface Props {

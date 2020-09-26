@@ -1,7 +1,6 @@
 import { shallowEqual, useSelector } from "react-redux";
-import {ArrayOfDashBoars} from "../Components/types";
+import {ArrayOfDashBoars} from "../Dashboard/models/dashboardTypes";
 
-//тут может быть много других возвращаемых значений
 export const useShallowEqualSelector = (selector: any): ArrayOfDashBoars => {
     return useSelector(selector, shallowEqual);
 };

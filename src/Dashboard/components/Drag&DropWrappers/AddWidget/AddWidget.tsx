@@ -1,6 +1,6 @@
 import React, {FC, useState} from "react";
 import {useDispatch} from "react-redux";
-import {addNewWidgetList} from "../../Store/actions";
+import {addNewWidgetList} from "../../../actions/actions";
 import './AddWidget.css';
 
 interface Props {

@@ -1,8 +1,8 @@
-import {ArrayOfDashBoars, Dashboard} from "../Components/types";
-import {actions} from "./actions";
-import {arrayOfDashBoars} from './initialState';
+import {ArrayOfDashBoars, Dashboard} from "../models/dashboardTypes";
+import {actions} from "../actions/actions";
+import {arrayOfDashBoars} from '../models/initialState';
 import uniqid from "uniqid";
-import {getCurrentItem, findObjectKeyByNameWidget} from "../Components/helpersDnD";
+import {getCurrentItem, findObjectKeyByNameWidget} from "../components/Drag&DropWrappers/helpersDnD";
 
 
 const isSameWidget = (item: Dashboard, action: Record<string, unknown>): boolean => {

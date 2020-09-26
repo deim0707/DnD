@@ -1,9 +1,9 @@
 import React, {FC, useState} from "react";
 import './ModeControl_ElWidget.css';
 
-import {ReactComponent as Snowflake} from '../../../Img/snowflake.svg';
-import {ReactComponent as Fan} from '../../../Img/fan.svg';
-import {ReactComponent as Heating} from '../../../Img/sun.svg';
+import {ReactComponent as Snowflake} from '../../../../Img/snowflake.svg';
+import {ReactComponent as Fan} from '../../../../Img/fan.svg';
+import {ReactComponent as Heating} from '../../../../Img/sun.svg';
 
 
 interface Props {

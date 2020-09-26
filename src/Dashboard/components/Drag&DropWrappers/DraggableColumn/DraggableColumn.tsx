@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {Draggable} from "react-beautiful-dnd";
-import {Widget} from "../types";
+import {Widget} from "../../../models/dashboardTypes";
 import DraggableItemList from "../DraggableItemList/DraggableItemList";
 import './DraggableColumn.css'
 

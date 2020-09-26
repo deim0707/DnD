@@ -1,10 +1,10 @@
 import React, {FC, useState} from "react";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
-import {WidgetMap, Dashboard} from "../types";
+import {WidgetMap, Dashboard} from "../../../models/dashboardTypes";
 import {reorder, reorderQuoteMap} from "../helpersDnD";
 import DraggableColumn from "../DraggableColumn/DraggableColumn";
 import {useDispatch, useSelector} from "react-redux";
-import {changeWidgetsOrder, changeWidgetListOrder, addNewWidgetToWidgetList} from "../../Store/actions";
+import {changeWidgetsOrder, changeWidgetListOrder, addNewWidgetToWidgetList} from "../../../actions/actions";
 import AddWidget from "../AddWidget/AddWidget";
 import TemplateColumn from "../TemplateColumn/TemplateColumn";
 import './DashBoards.css';

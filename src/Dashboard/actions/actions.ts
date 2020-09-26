@@ -1,4 +1,4 @@
-import {WidgetMap} from "../Components/types";
+import {WidgetMap} from "../models/dashboardTypes";
 
 export enum actions {
     CHANGE_WIDGETS_ORDER = 'CHANGE_WIDGETS_ORDER',
