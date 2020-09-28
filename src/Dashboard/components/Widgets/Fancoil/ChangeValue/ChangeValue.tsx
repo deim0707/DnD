@@ -1,5 +1,5 @@
 import React, {FC, useState} from "react";
-import './ChangeValue_ElWidget.css';
+import './ChangeValue.css';
 
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
     max?: number,
 }
 
-const ChangeValue_ElWidget: FC<Props> = ({value, typeValue, min, max}) => {
+const ChangeValue: FC<Props> = ({value, typeValue, min, max}) => {
 
     const [currentValue, setCurrentValue] = useState<number>(value);
 
@@ -57,4 +57,4 @@ const ChangeValue_ElWidget: FC<Props> = ({value, typeValue, min, max}) => {
     )
 }
 
-export default ChangeValue_ElWidget;
+export default ChangeValue;

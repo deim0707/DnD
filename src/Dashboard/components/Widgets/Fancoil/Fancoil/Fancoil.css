@@ -1,0 +1,11 @@
+.FancoilWrapper {
+    background-color: #494C54;
+    width: 305px;
+    height: 500px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}

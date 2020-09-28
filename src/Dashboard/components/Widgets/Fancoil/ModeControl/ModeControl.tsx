@@ -1,9 +1,9 @@
 import React, {FC, useState} from "react";
-import './ModeControl_ElWidget.css';
+import './ModeControl.css';
 
-import {ReactComponent as Snowflake} from '../../../../Img/snowflake.svg';
-import {ReactComponent as Fan} from '../../../../Img/fan.svg';
-import {ReactComponent as Heating} from '../../../../Img/sun.svg';
+import {ReactComponent as Snowflake} from '../../../../../Img/snowflake.svg';
+import {ReactComponent as Fan} from '../../../../../Img/fan.svg';
+import {ReactComponent as Heating} from '../../../../../Img/sun.svg';
 
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
     isAutoOn: boolean
 }
 
-const ModeControl_ElWidget: FC<Props> = ({isSnowflakeOn, isAutoOn, isFanOn, isHeatingOn}) => {
+const ModeControl: FC<Props> = ({isSnowflakeOn, isAutoOn, isFanOn, isHeatingOn}) => {
 
     const [isCurrentSnowflakeOn, setCurrentIsSnowflakeOn] = useState<boolean>(isSnowflakeOn);
     const [isCurrentFanOn, setCurrentIsFanOn] = useState<boolean>(isFanOn);
@@ -65,4 +65,4 @@ const ModeControl_ElWidget: FC<Props> = ({isSnowflakeOn, isAutoOn, isFanOn, isHe
     )
 }
 
-export default ModeControl_ElWidget;
+export default ModeControl;

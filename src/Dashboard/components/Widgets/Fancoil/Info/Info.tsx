@@ -1,5 +1,5 @@
 import React, {FC, ReactText} from "react";
-import './Info1_ElWidget.css';
+import './Info.css';
 
 interface Props {
     svgFile: any,
@@ -11,7 +11,7 @@ interface Props {
 const regExp: RegExp = /(\d+)\.(\d+)/;
 
 
-const Info1_ElWidget: FC<Props> = ({svgFile, value, typeValue, time}) => {
+const Info: FC<Props> = ({svgFile, value, typeValue, time}) => {
 
     const valueAfterRegExp: RegExpMatchArray | null = `${value}`.match(regExp);
     const valueMain: string = valueAfterRegExp !== null ? valueAfterRegExp[1] : '';
@@ -40,4 +40,4 @@ const Info1_ElWidget: FC<Props> = ({svgFile, value, typeValue, time}) => {
     )
 }
 
-export default Info1_ElWidget;
+export default Info;
