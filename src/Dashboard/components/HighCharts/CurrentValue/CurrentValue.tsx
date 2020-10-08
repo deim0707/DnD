@@ -12,6 +12,7 @@ import {
     Font,
 } from 'devextreme-react/circular-gauge';
 import './CurrentValue.css'
+import useCurrentValue from "./useCurrentValue.hook";
 
 // const subvalues = [8.1];
 // const subvalues2 = [7.0];
@@ -28,52 +29,32 @@ interface Ranges {
     max: number,
 }
 
-interface Props {
-    title: string,
-    currentValue: number,
-    rangeNormal: Ranges,
-    rangeMinAttention: Ranges,
-    rangeMaxAttention: Ranges,
-    rangeAccident: Ranges,
-    shortValue: number,
-    meanShortInterval: Ranges,
-    longValue: number,
-    meanLongInterval: Ranges,
-    tickInterval?: number,
-    isOnline?: boolean,
-    time?: number,
-}
-
-const CurrentValue: FC<Props> = ({title, tickInterval = 0.1, currentValue, rangeNormal, rangeMinAttention, rangeMaxAttention, rangeAccident, shortValue, meanShortInterval, longValue, meanLongInterval, isOnline, time}) => {
-
-    const [mainValue, setMainValue] = useState<number[]>([currentValue])
-    const [subvalues2, setSubvalues2] = useState<number[]>([longValue])
-    const [subvalues3, setSubvalues3] = useState<number[]>([shortValue])
 
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const a = +(Math.random() * 11 + 4).toFixed(2);
-            const b = +(Math.random() * 11 + 4).toFixed(2);
-            const c = +(Math.random() * 11 + 4).toFixed(2);
-            setMainValue([a]);
-            setSubvalues2([b]);
-            setSubvalues3([c]);
-            console.log(a, b, c)
+const CurrentValue: FC = () => {
 
-        }, 2000)
+    const {
+        title,
+        currentValue,
+        rangeNormal,
+        rangeMinAttention,
+        rangeMaxAttention,
+        rangeAccident,
+        shortValue,
+        meanShortInterval,
+        longValue,
+        meanLongInterval,
+        tickInterval,
+    } = useCurrentValue();
 
-        return (() => {
-            clearInterval(interval)
-        })
-    }, [mainValue, subvalues2, setSubvalues3])
+
 
     return (
         <div className="widgetWrapper">
             <CircularGauge
                 id="gauge"
                 value={8.1} // УБРАТЬ?
-                subvalues={mainValue}
+                subvalues={currentValue}
                 className='firstCircle'
             >
                 <Scale startValue={rangeMinAttention.min} endValue={rangeAccident.max} tickInterval={tickInterval}>
@@ -98,9 +79,9 @@ const CurrentValue: FC<Props> = ({title, tickInterval = 0.1, currentValue, range
 
             <CircularGauge
                 id="gauge"
-                value={8.1}
+                value={8.1} // УБРАТЬ???
                 className='secondCircle'
-                subvalues={subvalues2}
+                subvalues={longValue}
             >
                 <Scale startValue={rangeMinAttention.min} endValue={rangeAccident.max} tickInterval={tickInterval}/>
 
@@ -117,9 +98,9 @@ const CurrentValue: FC<Props> = ({title, tickInterval = 0.1, currentValue, range
 
             <CircularGauge
                 id="gauge"
-                value={8.1}
+                value={8.1} // УБРАТЬ???
                 className='thirdCircle'
-                subvalues={subvalues3}
+                subvalues={shortValue}
             >
                 <Scale startValue={rangeMinAttention.min} endValue={rangeAccident.max} tickInterval={tickInterval}/>
 

@@ -1,4 +1,5 @@
-import React from 'react';
+import {useEffect, useState} from "react";
+
 
 interface Ranges {
     min: number,
@@ -7,14 +8,14 @@ interface Ranges {
 
 interface Returned {
     title: string,
-    currentValue: number,
+    currentValue: number[],
+    shortValue: number[],
+    longValue: number[],
     rangeNormal: Ranges,
     rangeMinAttention: Ranges,
     rangeMaxAttention: Ranges,
     rangeAccident: Ranges,
-    shortValue: number,
     meanShortInterval: Ranges,
-    longValue: number,
     meanLongInterval: Ranges,
     tickInterval?: number,
     isOnline?: boolean,
@@ -22,49 +23,72 @@ interface Returned {
 }
 
 const useCurrentValue = (): Returned => {
-    let data = {
-        title: "Ток А. Освещение",
-        currentValue: 8.1,
-        shortValue: 9.0,
-        longValue: 7.0,
-        rangeMinAttention:{
-            min: 5.4,
-            max: 6.0,
-        },
-        rangeNormal: {
-            min: 6.0,
-            max: 7.0,
-        },
-        rangeMaxAttention: {
-            min: 7.0,
-            max: 9.4,
-        },
-        rangeAccident: {
-            min: 9.4,
-            max: 11.4,
-        },
-        meanShortInterval: {
-            min: 6.0,
-            max: 9.0,
-        },
-        meanLongInterval: {
-            min: 8.0,
-            max: 11.0,
-        },
 
-    }
+    // типа моки
+    let title = "Ток А. Освещение";
+    let currentValue: number[] = [8.1];
+    let shortValue: number[] = [8.6];
+    let longValue: number[] = [7.0];
+    let rangeMinAttention = {
+        min: 5.4,
+        max: 6.0,
+    };
+    let rangeNormal = {
+        min: 6.0,
+        max: 7.0,
+    };
+    let rangeMaxAttention = {
+        min: 7.0,
+        max: 9.4,
+    };
+    let rangeAccident = {
+        min: 9.4,
+        max: 11.4,
+    };
+    let meanShortInterval = {
+        min: 6.0,
+        max: 9.0,
+    };
+    let meanLongInterval = {
+        min: 8.0,
+        max: 11.0,
+    };
+
+
+    const [main, setMain] = useState(currentValue)
+    const [long, setLong] = useState(longValue)
+    const [short, setShort] = useState(shortValue)
+
+
+    useEffect(() => {
+            const changeValues = setInterval(() => {
+                setMain([+((Math.random() * 11 + 4).toFixed(2))]);
+                setLong([+((Math.random() * 11 + 4).toFixed(2))]);
+                setShort([+((Math.random() * 11 + 4).toFixed(2))]);
+            }, 2000)
+
+            return (() => {
+                clearInterval(changeValues)
+            })
+        },
+        [main, long, short]
+    )
 
     return {
-        title: data.title,
-        currentValue: data.currentValue,
-        rangeNormal: data.rangeNormal,
-        rangeMinAttention: data.rangeMinAttention,
-        rangeMaxAttention: data.rangeMaxAttention,
-        rangeAccident: data.rangeAccident,
-        shortValue: data.shortValue,
-        meanLongInterval: data.meanLongInterval,
-        meanShortInterval: data.meanShortInterval,
-        longValue: data.longValue,
+        title,
+        // currentValue,
+        // longValue,
+        // shortValue,
+        currentValue: main,
+        longValue: long,
+        shortValue: short,
+        rangeNormal,
+        rangeMinAttention,
+        rangeMaxAttention,
+        rangeAccident,
+        meanLongInterval,
+        meanShortInterval,
+        tickInterval: 0.1,
     }
 }
 
