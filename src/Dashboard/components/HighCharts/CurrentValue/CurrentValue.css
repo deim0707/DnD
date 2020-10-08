@@ -1,0 +1,59 @@
+.flexWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.widgetWrapper {
+    position: relative;
+}
+
+/*.firstCircle, .secondCircle, .thirdCircle {*/
+/*    width: 1000px;*/
+/*}*/
+
+.secondCircle, .thirdCircle {
+    position: absolute;
+    top: 9%;
+    left: 0;
+}
+
+.firstCircle .dxg-value-indicator,
+.secondCircle .dxg-value-indicator,
+.thirdCircle .dxg-value-indicator,
+.secondCircle .dxg-scale,
+.thirdCircle .dxg-scale {
+    display: none;
+}
+
+.infoBlock {
+    position: absolute;
+    top: 46%;
+    left: 26%;
+    width: 140px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: stretch;
+    border: 1px solid black;
+}
+
+.infoBlock .infoBlockLine {
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+    /*align-items: center;*/
+}
+
+.infoBlock .infoBlockTime {
+    /*align-self: start;*/
+    /*flex-grow: 1;*/
+    height: 88px;
+}
+
+.infoBlock .infoBlockValue {
+    background-color: #32CD32;
+    /*font-size: 26px;*/
+    /*align-self: stretch;*/
+    /*flex-grow: 2;*/
+}
+
