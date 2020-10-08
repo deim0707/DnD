@@ -1,19 +1,17 @@
-.flexWrapper {
-    display: flex;
-    justify-content: center;
-}
-
 .widgetWrapper {
     position: relative;
 }
 
-/*.firstCircle, .secondCircle, .thirdCircle {*/
-/*    width: 1000px;*/
-/*}*/
+.firstCircle,
+.secondCircle,
+.thirdCircle {
+    height: 400px;
+    width: 100%;
+}
 
 .secondCircle, .thirdCircle {
     position: absolute;
-    top: 9%;
+    top: 6%;
     left: 0;
 }
 
@@ -27,33 +25,31 @@
 
 .infoBlock {
     position: absolute;
-    top: 46%;
-    left: 26%;
+    top: 45%;
+    left: 42%;
     width: 140px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     justify-content: center;
     align-items: stretch;
-    border: 1px solid black;
-}
-
-.infoBlock .infoBlockLine {
-    /*display: flex;*/
-    /*justify-content: space-between;*/
-    /*align-items: center;*/
+    font-family: 'Segoe UI Light', 'Helvetica Neue Light', 'Segoe UI', 'Helvetica Neue', 'Trebuchet MS', Verdana, sans-serif;
 }
 
 .infoBlock .infoBlockTime {
-    /*align-self: start;*/
-    /*flex-grow: 1;*/
     height: 88px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .infoBlock .infoBlockValue {
     background-color: #32CD32;
-    /*font-size: 26px;*/
-    /*align-self: stretch;*/
-    /*flex-grow: 2;*/
+    font-size: 29px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
 }
 
