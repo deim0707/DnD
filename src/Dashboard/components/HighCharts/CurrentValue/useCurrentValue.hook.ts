@@ -8,6 +8,7 @@ interface Ranges {
 
 interface Returned {
     title: string,
+    typeValue: string,
     currentValue: number[],
     shortValue: number[],
     longValue: number[],
@@ -26,6 +27,7 @@ const useCurrentValue = (): Returned => {
 
     // типа моки
     let title = "Ток А. Освещение";
+    let typeValue = 'A';
     let currentValue: number[] = [8.1];
     let shortValue: number[] = [8.6];
     let longValue: number[] = [7.0];
@@ -77,6 +79,7 @@ const useCurrentValue = (): Returned => {
 
     return {
         title,
+        typeValue,
         // currentValue,
         // longValue,
         // shortValue,

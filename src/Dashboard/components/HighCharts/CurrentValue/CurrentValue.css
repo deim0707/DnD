@@ -61,7 +61,7 @@
 }
 
 .infoBlock .infoBlockValue {
-    width: 80px;
+    min-width: 80px;
     background-color: #32CD32;
     font-size: 29px;
     color: white;

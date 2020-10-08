@@ -19,6 +19,7 @@ const CurrentValue: FC = () => {
 
     const {
         title,
+        typeValue,
         currentValue,
         rangeNormal,
         rangeMinAttention,
@@ -105,7 +106,7 @@ const CurrentValue: FC = () => {
                 </div>
                 <div className="infoBlockValue">
                     <span>{currentValue}</span>
-                    <span>A</span>
+                    <span>{typeValue}</span>
                 </div>
                 <div className="infoBlockTime">
                     <span>среднее</span>
@@ -113,7 +114,7 @@ const CurrentValue: FC = () => {
                 </div>
                 <div className="infoBlockValue">
                     <span>{shortValue}</span>
-                    <span>A</span>
+                    <span>{typeValue}</span>
                 </div>
                 <div className="infoBlockTime">
                     <span>среднее</span>
@@ -121,7 +122,7 @@ const CurrentValue: FC = () => {
                 </div>
                 <div className="infoBlockValue">
                     <span>{longValue}</span>
-                    <span>A</span>
+                    <span>{typeValue}</span>
                 </div>
             </div>
 
