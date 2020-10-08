@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC} from "react";
 import {
     CircularGauge,
     Scale,
@@ -13,22 +13,6 @@ import {
 } from 'devextreme-react/circular-gauge';
 import './CurrentValue.css'
 import useCurrentValue from "./useCurrentValue.hook";
-
-// const subvalues = [8.1];
-// const subvalues2 = [7.0];
-// const subvalues3 = [9.0];
-//
-// setInterval(()=>{
-//     const a = (Math.random() * 6 + 1).toFixed(2) ;
-//     const b = (Math.random() * 6 + 1).toFixed(2) ;
-//     const c = (Math.random() * 6 + 1).toFixed(2) ;
-// }, 1000)
-
-interface Ranges {
-    min: number,
-    max: number,
-}
-
 
 
 const CurrentValue: FC = () => {
@@ -45,15 +29,20 @@ const CurrentValue: FC = () => {
         longValue,
         meanLongInterval,
         tickInterval,
+        isOnline
     } = useCurrentValue();
-
 
 
     return (
         <div className="widgetWrapper">
+
+            <div
+                className='circleOnline'
+                style={{backgroundColor: isOnline ? "#32CD32" : "red"}}
+            />
+
             <CircularGauge
                 id="gauge"
-                value={8.1} // УБРАТЬ?
                 subvalues={currentValue}
                 className='firstCircle'
             >
@@ -79,7 +68,6 @@ const CurrentValue: FC = () => {
 
             <CircularGauge
                 id="gauge"
-                value={8.1} // УБРАТЬ???
                 className='secondCircle'
                 subvalues={longValue}
             >
@@ -88,7 +76,6 @@ const CurrentValue: FC = () => {
                 <RangeContainer offset={55}>
                     <Range startValue={rangeMinAttention.min} endValue={rangeAccident.max} color="transparent"/>
                     <Range startValue={meanLongInterval.min} endValue={meanLongInterval.max} color="red"/>
-                    <Range startValue={9.4} endValue={11.4} color="transparent"/> {/*// УБРАТЬ?*/}
 
                 </RangeContainer>
 
@@ -98,7 +85,6 @@ const CurrentValue: FC = () => {
 
             <CircularGauge
                 id="gauge"
-                value={8.1} // УБРАТЬ???
                 className='thirdCircle'
                 subvalues={shortValue}
             >

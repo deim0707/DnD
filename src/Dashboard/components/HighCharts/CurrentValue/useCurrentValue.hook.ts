@@ -35,10 +35,10 @@ const useCurrentValue = (): Returned => {
     };
     let rangeNormal = {
         min: 6.0,
-        max: 7.0,
+        max: 9.0,
     };
     let rangeMaxAttention = {
-        min: 7.0,
+        min: 9.0,
         max: 9.4,
     };
     let rangeAccident = {
@@ -51,8 +51,9 @@ const useCurrentValue = (): Returned => {
     };
     let meanLongInterval = {
         min: 8.0,
-        max: 11.0,
+        max: 10.2,
     };
+    let isOnline = true;
 
 
     const [main, setMain] = useState(currentValue)
@@ -89,6 +90,7 @@ const useCurrentValue = (): Returned => {
         meanLongInterval,
         meanShortInterval,
         tickInterval: 0.1,
+        isOnline: isOnline
     }
 }
 

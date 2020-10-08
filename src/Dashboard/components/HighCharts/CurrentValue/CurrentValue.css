@@ -1,5 +1,21 @@
 .widgetWrapper {
     position: relative;
+    margin-top: 20px;
+}
+
+.widgetWrapper .circleOnline {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    right: 30%;
+    top: 3%;
+}
+
+.firstCircle {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .firstCircle,
@@ -11,7 +27,7 @@
 
 .secondCircle, .thirdCircle {
     position: absolute;
-    top: 6%;
+    top: 22px;
     left: 0;
 }
 
@@ -24,9 +40,10 @@
 }
 
 .infoBlock {
-    position: absolute;
-    top: 45%;
-    left: 42%;
+    position: relative;
+    top: 150px;
+    left: -15px;
+    margin: 0 auto;
     width: 140px;
     display: grid;
     grid-template-columns: 1fr 1fr;
