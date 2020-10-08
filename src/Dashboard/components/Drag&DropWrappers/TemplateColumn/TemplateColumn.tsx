@@ -40,7 +40,7 @@ const TemplateColumn: FC = () => {
         <div>
             <DraggableColumn
                 index={0}
-                title={'Шаблоны'}
+                title={'Палитра'}
                 items={data}
                 isColumnDragDisabled={true}
             />

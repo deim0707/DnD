@@ -3,8 +3,8 @@ import Info from "../Info/Info";
 import ChangeValue from "../ChangeValue/ChangeValue";
 import ModeControl from "../ModeControl/ModeControl";
 import FanPower from "../FanPower/FanPower";
-import './Fancoil.css'
 import Checkbox from "../Checkbox/Checkbox";
+import './Fancoil.css'
 
 const thermometerSvg = require('../../../../../Img/thermometer.svg')
 
@@ -25,7 +25,7 @@ const Fancoil: FC = () => {
 
             {/*<FanPower/>*/}
 
-            <Checkbox/>
+            {/*<Checkbox/>*/}
         </div>
     )
 }

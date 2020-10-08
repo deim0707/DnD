@@ -49,7 +49,7 @@ const DashBoard: FC<Props> = ({id}) => {
             return;
         }
 
-        if (result.source.droppableId === 'Шаблоны') {
+        if (result.source.droppableId === 'Палитра') {
             dispatch(addNewWidgetToWidgetList('hjg123jhg123', result.draggableId, result.destination.droppableId, result.destination.index))
             return;
         }
@@ -82,7 +82,7 @@ const DashBoard: FC<Props> = ({id}) => {
     };
 
     return (
-        <div className='Dashboard'>
+        <div className='DashBoard'>
 
             {isShowAddWidgetList ? <AddWidget
                 changeVisibility={setIsShowAddWidgetList}
