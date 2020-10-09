@@ -20,6 +20,7 @@ const CurrentValue: FC = () => {
     const {
         title,
         typeValue,
+        time,
         currentValue,
         rangeNormal,
         rangeMinAttention,
@@ -33,7 +34,6 @@ const CurrentValue: FC = () => {
         isOnline
     } = useCurrentValue();
 
-
     return (
         <div className="widgetWrapper">
 
@@ -44,7 +44,7 @@ const CurrentValue: FC = () => {
 
             <CircularGauge
                 id="gauge"
-                subvalues={currentValue}
+                subvalues={currentValue.all}
                 className='firstCircle'
             >
                 <Scale startValue={rangeMinAttention.min} endValue={rangeAccident.max} tickInterval={tickInterval}>
@@ -99,18 +99,48 @@ const CurrentValue: FC = () => {
                 <SubvalueIndicator offset={73}/>
             </CircularGauge>
 
+            {/*<div className="infoBlock">*/}
+            {/*    <div className="infoBlockTime">*/}
+            {/*        <span>{time} мин.</span>*/}
+            {/*        <span>назад</span>*/}
+            {/*    </div>*/}
+            {/*    <div className="infoBlockValue">*/}
+            {/*        <span>{currentValue}</span>*/}
+            {/*        <span>{typeValue}</span>*/}
+            {/*    </div>*/}
+            {/*    <div className="infoBlockTime">*/}
+            {/*        <span>среднее</span>*/}
+            {/*        <span>за 10 мин.</span>*/}
+            {/*    </div>*/}
+            {/*    <div className="infoBlockValue">*/}
+            {/*        <span>{shortValue}</span>*/}
+            {/*        <span>{typeValue}</span>*/}
+            {/*    </div>*/}
+            {/*    <div className="infoBlockTime">*/}
+            {/*        <span>среднее</span>*/}
+            {/*        <span>за 30 мин.</span>*/}
+            {/*    </div>*/}
+            {/*    <div className="infoBlockValue">*/}
+            {/*        <span>{longValue}</span>*/}
+            {/*        <span>{typeValue}</span>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+
             <div className="infoBlock">
                 <div className="infoBlockTime">
-                    <span>0.45 мин.</span>
+                    <span>{time} мин.</span>
                     <span>назад</span>
                 </div>
                 <div className="infoBlockValue">
-                    <span>{currentValue}</span>
-                    <span>{typeValue}</span>
+                    <div className="valueMain">{currentValue.main}</div>
+                    <div className="valueSecondary">
+                        <div><b>A</b></div>
+                        <div>.{currentValue.secondary}</div>
+                    </div>
                 </div>
                 <div className="infoBlockTime">
                     <span>среднее</span>
-                    <span>за 10 мин</span>
+                    <span>за 10 мин.</span>
                 </div>
                 <div className="infoBlockValue">
                     <span>{shortValue}</span>
@@ -118,7 +148,7 @@ const CurrentValue: FC = () => {
                 </div>
                 <div className="infoBlockTime">
                     <span>среднее</span>
-                    <span>за 30 мин</span>
+                    <span>за 30 мин.</span>
                 </div>
                 <div className="infoBlockValue">
                     <span>{longValue}</span>

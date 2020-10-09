@@ -67,7 +67,16 @@
     color: white;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-
+    justify-content: center;
 }
 
+.infoBlockValue .valueMain {
+    font-size: 45px;
+}
+.infoBlockValue .valueSecondary {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.infoBlockValue .valueSecondary:first-child {
+}

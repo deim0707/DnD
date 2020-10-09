@@ -17,7 +17,7 @@
     "classnames": "^2.2.6",
     "devextreme": "20.1.7",
     "devextreme-react": "20.1.7",
-    "highcharts": "^8.2.0",
+    "moment": "^2.29.1",
     "primeicons": "^4.0.0",
     "primereact": "^5.0.0-rc.2",
     "react": "^16.13.1",
